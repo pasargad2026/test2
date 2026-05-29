@@ -1,194 +1,711 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بيمه عمر مبتني بر طلا | پاسارگاد</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v33/Vazirmatn-font-face.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-/* ----- Base & Reset ----- */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Vazirmatn', sans-serif;}
-body {background:#0d0d0d; color:#f5d77a; line-height:1.6; overflow-x:hidden;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>طلای پاسارگاد | بیمه عمر مبتنی بر طلا | سرمایه‌ای به سنگینی طلا</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font Vazir -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v33/Vazirmatn-font-face.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ----- Hero Section ----- */
-.hero {
-  height: 90vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; background:#1a1a1a; position:relative; overflow:hidden;
-}
-.hero h1 {font-size:3rem; color:gold; margin-bottom:20px; z-index:2; position:relative;}
-.hero p {font-size:1.3rem; margin-bottom:30px; z-index:2; position:relative;}
-.cta-btn {
-  background: linear-gradient(45deg, #ffd700, #c9a227);
-  color:#000; padding:15px 35px; text-decoration:none;
-  border-radius:30px; font-weight:bold; transition:0.3s; z-index:2; position:relative;
-}
-.cta-btn:hover {transform: scale(1.1);}
+        body {
+            font-family: 'Vazirmatn', 'Vazir', sans-serif;
+            background: #0a0a0a;
+            color: #e6d5a8;
+            overflow-x: hidden;
+        }
 
-/* ----- Floating gold bars ----- */
-.gold-bar {
-  position:absolute; width:40px; height:15px; background:gold;
-  top: -20px; animation:fall linear infinite; border-radius:4px;
-}
-@keyframes fall {
-  0% {transform: translateY(0) rotate(0deg); opacity:1;}
-  100% {transform: translateY(110vh) rotate(360deg); opacity:0;}
-}
+        /* انیمیشن ذرات طلا */
+        .gold-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700, #b8860b);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: floatGold linear infinite;
+        }
 
-/* ----- Info Section ----- */
-.info {padding:60px 10%; text-align:center;}
-.info h2 {font-size:2.2rem; margin-bottom:40px;}
-.cards {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
-.card {
-  background:#1a1a1a; padding:25px; border:1px solid gold;
-  border-radius:15px; flex:1 1 250px; transition:0.3s;
-}
-.card:hover {transform: translateY(-10px); box-shadow:0 0 20px gold;}
-.card h3 {margin-bottom:15px; color:gold;}
-.card p {font-size:1rem;}
+        @keyframes floatGold {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-/* ----- Counter Section ----- */
-.counter-section {padding:60px 10%; text-align:center;}
-.counter-section h2 {font-size:2rem; margin-bottom:20px;}
-.counter {font-size:2.5rem; color:gold; font-weight:bold;}
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 10;
+        }
 
-/* ----- Chart Section ----- */
-.chart-section {padding:60px 10%; background:#111; text-align:center;}
-.chart-section h2 {font-size:2rem; margin-bottom:40px;}
+        /* هدر شیشه‌ای طلایی */
+        .glass-header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-/* ----- News Section ----- */
-.news-section {padding:60px 10%; background:#1a1a1a; color:#f5d77a; text-align:right; border-top:2px solid gold;}
-.news-section h2 {font-size:2rem; margin-bottom:20px;}
-.news-section ul {list-style:none; padding:0; margin-top:20px;}
-.news-section li {padding:10px 0;}
-.news-section a {color:gold; text-decoration:none;}
-.news-section a:hover {text-decoration:underline;}
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
 
-/* ----- Footer ----- */
-footer {background:#000; padding:20px; text-align:center; font-size:0.9rem; color:#f5d77a;}
-</style>
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #e8b317);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            color: #ffd700;
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e6d5a8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .btn-nav {
+            background: linear-gradient(45deg, #ffd700, #c9a227);
+            color: #000 !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        /* هیرو سکشن */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            background: rgba(255, 215, 0, 0.15);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #f5c542);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .campaign-date {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1.5px solid #ffd700;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: 600;
+            color: #ffd966;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #c9bc8a;
+            max-width: 90%;
+            margin-bottom: 2rem;
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, #ffd700, #c9a227);
+            color: #000;
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-outline-gold {
+            border: 1.5px solid #ffd700;
+            background: transparent;
+            color: #ffd700;
+            padding: 0.85rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-outline-gold:hover {
+            background: #ffd700;
+            color: #000;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffd700;
+        }
+
+        /* کارت‌های طلایی */
+        .section-dark {
+            padding: 5rem 0;
+            background: #0f0f0f;
+        }
+
+        .section-light {
+            padding: 5rem 0;
+            background: #141414;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #b8a97a;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .gold-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gold-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .gold-card:hover {
+            transform: translateY(-8px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .gold-card i {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .gold-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* جدول مقایسه */
+        .compare-wrapper {
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .compare-table th {
+            color: #ffd700;
+            font-weight: 700;
+            background: #0f0f0f;
+        }
+
+        .compare-table td i.fa-check-circle {
+            color: #2ecc71;
+        }
+
+        /* نمودار */
+        .chart-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* بخش سوالات متداول */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffd966;
+        }
+
+        .faq-question i {
+            transition: 0.3s;
+            color: #ffd700;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+            color: #b8a97a;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.2rem 1.5rem;
+            max-height: 250px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* فرم ثبت‌نام */
+        .form-card {
+            background: #1a1a1a;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #ffd966;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: #0f0f0f;
+            color: #e6d5a8;
+            font-family: inherit;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, #ffd700, #c9a227);
+            color: #000;
+            padding: 1rem;
+            border-radius: 40px;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* فوتر */
+        .footer {
+            background: #050505;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #ffd700;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 40px;
+            z-index: 1000;
+            opacity: 0;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<header class="hero">
-  <h1>بيمه عمر مبتني بر طلا</h1>
-  <p>سرمايه‌گذاري مطمئن، آينده‌اي درخشان</p>
-  
-  <!-- اضافه شدن خط مهلت ثبت‌نام کمپین عید قربان تا عید غدیر -->
-  <p style="font-size:1.1rem; margin-top:-10px; margin-bottom:20px; background:rgba(0,0,0,0.6); padding:8px 20px; border-radius:40px; display:inline-block; border:1px solid gold;">
-    🕌 مهلت ثبت‌نام کمپین عید قربان تا عید غدیر: ۶ تا ۱۴ اردیبهشت ماه 🕌
-  </p>
-  
-  <a href="#" class="cta-btn">مشاوره و ثبت‌نام</a>
+<!-- هدر شیشه‌ای -->
+<div class="glass-header">
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-crown"></i> طلای پاسارگاد
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#features">مزایا</a></li>
+                <li><a href="#compare">مقایسه</a></li>
+                <li><a href="#faq">سوالات</a></li>
+                <li><a href="#register" class="btn-nav">ثبت‌نام</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-  <!-- Gold bars animation -->
-  <div class="gold-bar" style="left:5%; animation-duration:6s;"></div>
-  <div class="gold-bar" style="left:25%; animation-duration:5s;"></div>
-  <div class="gold-bar" style="left:50%; animation-duration:7s;"></div>
-  <div class="gold-bar" style="left:70%; animation-duration:4s;"></div>
-  <div class="gold-bar" style="left:85%; animation-duration:6.5s;"></div>
-</header>
-
-<section class="info">
-  <h2>چرا بيمه عمر مبتني بر طلا؟</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>🏅 پشتوانه طلا</h3>
-      <p>حفظ ارزش سرمايه در برابر تورم با مبناي طلا</p>
+<!-- بخش اصلی Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-right">
+            <div class="hero-badge">
+                <i class="fas fa-gem"></i> بیمه عمر مبتنی بر طلا | پاسارگاد
+            </div>
+            <h1>سرمایه‌ای به سنگینی طلا<br>امنیتی به وسعت عمر</h1>
+            <div class="campaign-date">
+                <i class="fas fa-calendar-alt"></i> مهلت ثبت‌نام کمپین عید قربان تا عید غدیر: <strong>۶ تا ۱۴ اردیبهشت ماه</strong>
+            </div>
+            <p>ارزش اندوخته شما بر اساس قیمت روز طلای ۲۴ عیار محاسبه می‌شود. بدون محدودیت سنی، وام بدون ضامن، پوشش SOS جهانی رایگان و بیمه آتش‌سوزی منزل رایگان!</p>
+            <div class="hero-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#register" class="btn-gold"><i class="fas fa-headset"></i> مشاوره و ثبت‌نام</a>
+                <a href="#features" class="btn-outline-gold"><i class="fas fa-chart-line"></i> مزایا بیشتر</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><div class="stat-number">۱۵۰,۰۰۰+</div><div>بیمه‌گذار</div></div>
+                <div class="stat-item"><div class="stat-number">۹۸٪</div><div>رضایت</div></div>
+                <div class="stat-item"><div class="stat-number">۸۰۰+</div><div>میلیارد تومان فروش</div></div>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left" style="flex: 1; text-align: center;">
+            <i class="fas fa-gem" style="font-size: 12rem; color: rgba(255,215,0,0.1);"></i>
+        </div>
     </div>
-    <div class="card">
-      <h3>💰 سود مشارکت</h3>
-      <p>سهم شما از سود سرمايه‌گذاري‌هاي بزرگ</p>
-    </div>
-    <div class="card">
-      <h3>🛡️ امنيت آينده</h3>
-      <p>آرامش خاطر براي شما و خانواده‌تان</p>
-    </div>
-    <div class="card">
-      <h3>🤝 وام بدون ضامن</h3>
-      <p>امکان دريافت وام آسان بدون نياز به ضامن</p>
-    </div>
-    <div class="card">
-      <h3>🌍 پوشش تکميلي</h3>
-      <p>شامل پوشش‌هاي SOS و خدمات تکميلي متنوع</p>
-    </div>
-  </div>
 </section>
 
-<section class="counter-section">
-  <h2>فروش اين طرح تا به الان</h2>
-  <div class="counter" id="sales-counter">0</div>
+<!-- بخش مزایا -->
+<section class="section-dark" id="features">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">چرا بیمه عمر مبتنی بر طلا؟</h2>
+        <p class="section-sub" data-aos="fade-up">مزایای منحصربه‌فردی که این طرح را به بهترین انتخاب تبدیل کرده است</p>
+        <div class="gold-grid">
+            <div class="gold-card" data-aos="fade-up"><i class="fas fa-coins"></i><h3>پشتوانه طلا</h3><p>ارزش سرمایه بر اساس قیمت روز طلای ۲۴ عیار، حفظ ارزش در برابر تورم</p></div>
+            <div class="gold-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-hand-holding-usd"></i><h3>وام بدون ضامن</h3><p>تا ۹۰٪ ارزش اندوخته، بدون نیاز به ضامن و با کمترین کارمزد</p></div>
+            <div class="gold-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-globe-asia"></i><h3>SOS جهانی رایگان</h3><p>پوشش اضطراری پزشکی در سراسر جهان، کاملاً رایگان</p></div>
+            <div class="gold-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-home"></i><h3>آتش‌سوزی منزل رایگان</h3><p>پوشش بنا و اثاثیه منزل در برابر آتش‌سوزی، بدون هزینه اضافه</p></div>
+            <div class="gold-card" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-infinity"></i><h3>بدون محدودیت سنی</h3><p>افراد در هر سنی می‌توانند ثبت‌نام کرده و از مزایا بهره‌مند شوند</p></div>
+            <div class="gold-card" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-chart-line"></i><h3>سود مشارکتی</h3><p>بهره‌مندی از سود سرمایه‌گذاری‌های شرکت بیمه پاسارگاد</p></div>
+        </div>
+    </div>
 </section>
 
-<section class="chart-section">
-  <h2>سود مشارکت در منافع</h2>
-  <canvas id="profitChart"></canvas>
+<!-- جدول مقایسه -->
+<section class="section-light" id="compare">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">مقایسه با بیمه‌های معمولی</h2>
+        <p class="section-sub" data-aos="fade-up">طلای پاسارگاد در یک نگاه</p>
+        <div class="compare-wrapper" data-aos="fade-up">
+            <table class="compare-table">
+                <thead>
+                    <tr><th>ویژگی</th><th>طلای پاسارگاد</th><th>بیمه عمر معمولی</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>مبنای ارزش‌گذاری</td><td><i class="fas fa-gem" style="color:#ffd700;"></i> قیمت طلای ۲۴ عیار</td><td>ریال + سود ثابت</td></tr>
+                    <tr><td>SOS جهانی</td><td><i class="fas fa-check-circle"></i> رایگان</td><td>ندارد / با هزینه</td></tr>
+                    <tr><td>بیمه آتش‌سوزی منزل</td><td><i class="fas fa-check-circle"></i> رایگان (بنا+اثاثیه)</td><td>ندارد</td></tr>
+                    <tr><td>وام بدون ضامن</td><td><i class="fas fa-check-circle"></i> بله (تا ۹۰٪)</td><td>نیاز به ضامن</td></tr>
+                    <tr><td>محدودیت سنی</td><td><i class="fas fa-check-circle"></i> بدون محدودیت</td><td>۱۸ تا ۶۰ سال</td></tr>
+                    <tr><td>حفظ در برابر تورم</td><td><i class="fas fa-check-circle"></i> عالی (همسو با طلا)</td><td>متوسط</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 
-<section class="news-section">
-  <h2>📰 اخبار روزانه</h2>
-  <ul id="rss-news"></ul>
+<!-- نمودار سود مشارکت -->
+<section class="section-dark">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">سود مشارکت در منافع</h2>
+        <p class="section-sub" data-aos="fade-up">رشد پایدار سرمایه همراه با طلا</p>
+        <div class="chart-container" data-aos="fade-up">
+            <canvas id="profitChart"></canvas>
+        </div>
+    </div>
 </section>
 
-<footer>
-  <p>© 2026 - بيمه عمر پاسارگاد | طراحي با تم طلايي</p>
+<!-- سوالات متداول -->
+<section class="section-light" id="faq">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">سوالات متداول</h2>
+        <div class="faq-grid" data-aos="fade-up">
+            <div class="faq-item"><div class="faq-question">آیا واقعاً برای تمام سنین امکان ثبت‌نام وجود دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">بله، در طرح طلای پاسارگاد هیچ محدودیت سنی وجود ندارد و افراد در هر سنی می‌توانند ثبت‌نام کنند.</div></div>
+            <div class="faq-item"><div class="faq-question">وام بدون ضامن چگونه دریافت می‌شود؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پس از ۶ ماه، تا ۹۰٪ ارزش اندوخته بدون نیاز به ضامن و تنها با تعهد بیمه‌نامه قابل دریافت است.</div></div>
+            <div class="faq-item"><div class="faq-question">بیمه SOS جهانی چه خدماتی دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پوشش اضطراری پزشکی، انتقال بیمار، خدمات درمانی اورژانس در سراسر جهان، کاملاً رایگان.</div></div>
+            <div class="faq-item"><div class="faq-question">بیمه آتش‌سوزی منزل چه پوششی دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پوشش رایگان بنا (ساختمان) و اثاثیه منزل در برابر آتش‌سوزی، انفجار و صاعقه.</div></div>
+            <div class="faq-item"><div class="faq-question">مهلت ثبت‌نام کمپین ویژه تا کی است؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">مهلت ثبت‌نام کمپین عید قربان تا عید غدیر از ۶ تا ۱۴ اردیبهشت ماه می‌باشد.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- فرم ثبت‌نام -->
+<section class="section-dark" id="register">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">ثبت‌نام در طرح طلای پاسارگاد</h2>
+        <p class="section-sub" data-aos="fade-up">همین حالا فرم را پر کنید، کارشناسان ما با شما تماس می‌گیرند</p>
+        <div class="form-card" data-aos="fade-up">
+            <form id="registerForm">
+                <div class="form-grid">
+                    <div class="input-group"><label>نام و نام خانوادگی</label><input type="text" id="fullname" required></div>
+                    <div class="input-group"><label>شماره همراه</label><input type="tel" id="phone" required></div>
+                    <div class="input-group"><label>تاریخ تولد (اختیاری)</label><input type="text" placeholder="۱۳۷۰/۰۵/۲۰"></div>
+                    <div class="input-group"><label>حق بیمه پیشنهادی (تومان)</label><select><option>۵۰۰,۰۰۰</option><option selected>۱,۰۰۰,۰۰۰</option><option>۱,۵۰۰,۰۰۰</option><option>۲,۰۰۰,۰۰۰</option></select></div>
+                    <div class="full-width input-group"><label>پیام یا سوال</label><textarea rows="2" placeholder="سوال خود را بپرسید..."></textarea></div>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-gem"></i> ثبت‌نام در طرح طلای پاسارگاد</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- فوتر -->
+<footer class="footer">
+    <div class="container">
+        <p><i class="fas fa-crown" style="color:#ffd700;"></i> بیمه عمر مبتنی بر طلا | شرکت بیمه پاسارگاد</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">سرمایه‌ای به سنگینی طلا، امنیتی به وسعت عمر | کمپین ویژه عید قربان تا عید غدیر: ۶ تا ۱۴ اردیبهشت</p>
+        <p style="margin-top: 1rem; font-size: 0.7rem;">© ۱۴۰۴ تمامی حقوق محفوظ است</p>
+    </div>
 </footer>
 
-<script>
-// ----- Counter for sales -----
-let sales = 0;
-const targetSales = 800000000000; // 800 ميليارد
-const counterElem = document.getElementById('sales-counter');
-function updateSales() {
-  if(sales < targetSales){
-    sales += Math.floor(targetSales/200); // افزايش تدريجي
-    if(sales > targetSales) sales = targetSales;
-    counterElem.innerText = sales.toLocaleString() + " تومان";
-    requestAnimationFrame(updateSales);
-  }
-}
-updateSales();
+<div id="toastMsg" class="toast-msg">✅ ثبت‌نام شما با موفقیت انجام شد!</div>
 
-// ----- Chart.js -----
-const ctx = document.getElementById('profitChart').getContext('2d');
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['1402','1404'],
-        datasets: [{
-            label:'سود مشارکت در منافع (ميليارد تومان)',
-            data:[1200,2000],
-            borderColor:'gold',
-            backgroundColor:'rgba(255,215,0,0.2)',
-            tension:0.4,
-            fill:true,
-            pointRadius:6,
-            pointBackgroundColor:'gold'
-        }]
-    },
-    options:{
-        plugins:{legend:{labels:{color:'gold'}}},
-        scales:{
-            x:{ticks:{color:'gold'}},
-            y:{ticks:{color:'gold'}}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+
+    // ذرات طلا
+    function createParticles() {
+        const particleCount = 50;
+        for (let i = 0; i < particleCount; i++) {
+            let particle = document.createElement('div');
+            particle.classList.add('gold-particle');
+            let size = Math.random() * 5 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 15 + 8 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(particle);
         }
     }
-});
+    createParticles();
 
-// ----- RSS Feed for news -----
-const RSS_URL = "https://api.rss2json.com/v1/api.json?rss_url=https://eghtesaad24.ir/fa/rss/11";
-fetch(RSS_URL)
-  .then(response => response.json())
-  .then(data => {
-    const ul = document.getElementById('rss-news');
-    data.items.slice(0,5).forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
-      ul.appendChild(li);
+    // Chart.js
+    const ctx = document.getElementById('profitChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['۱۴۰۰', '۱۴۰۱', '۱۴۰۲', '۱۴۰۳', '۱۴۰۴'],
+            datasets: [{
+                label: 'سود مشارکت در منافع (میلیارد تومان)',
+                data: [850, 1100, 1480, 1920, 2450],
+                borderColor: '#ffd700',
+                backgroundColor: 'rgba(255,215,0,0.1)',
+                tension: 0.3,
+                fill: true,
+                pointRadius: 6,
+                pointBackgroundColor: '#ffd700',
+                pointBorderColor: '#b8860b',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { labels: { color: '#ffd700', font: { size: 12 } } }
+            },
+            scales: {
+                x: { ticks: { color: '#e6d5a8' }, grid: { color: 'rgba(255,215,0,0.2)' } },
+                y: { ticks: { color: '#e6d5a8' }, grid: { color: 'rgba(255,215,0,0.2)' } }
+            }
+        }
     });
-  })
-  .catch(err => console.error("خطا در بارگذاري RSS:", err));
-</script>
 
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    });
+    if (faqItems.length) faqItems[0].classList.add('active');
+
+    // Toast Message
+    function showToast(msg) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        setTimeout(() => toast.style.opacity = '0', 4000);
+    }
+
+    // Form Submit
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fullname').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        if (!name || !phone) {
+            showToast("⚠️ لطفاً نام و شماره تماس را وارد کنید.");
+            return;
+        }
+        showToast(`✅ ${name} عزیز، ثبت‌نام شما در طرح طلای پاسارگاد با موفقیت انجام شد. کارشناسان تماس می‌گیرند.`);
+        form.reset();
+    });
+</script>
 </body>
 </html>
