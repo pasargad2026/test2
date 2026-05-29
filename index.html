@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>بیمه زندگی آرمان | مشاوره و فروش بیمه عمر</title>
-    <!-- Font Awesome Icons (v6) -->
+    <title>آرمان آتیه | پیشرو در مشاوره و فروش بیمه عمر</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font: Vazir (وزیر) مدرن و خوانا -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Vazir + Outfit برای ترکیب مدرن -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -16,129 +20,142 @@
         }
 
         body {
-            font-family: 'Vazir', 'Tahoma', sans-serif;
-            background-color: #f9fafc;
-            color: #1e2a3e;
-            line-height: 1.6;
+            font-family: 'Vazir', 'Outfit', sans-serif;
+            background-color: #fefefe;
+            color: #111827;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* Custom scrollbar */
+        /* اسکرول بار سفارشی */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #e2e8f0;
+            background: #e6edf2;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #2c7da0;
+            background: linear-gradient(135deg, #0f766e, #14b8a6);
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #1f5068;
-        }
 
-        /* ریسپانسیو و ظاهر کلی */
         .container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
-        /* Header & Navbar */
+        /* نوار ناوبری شیشه‌ای با افکت blur بالا */
         .navbar {
-            background: white;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(2px);
-            background: rgba(255,255,255,0.96);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
         }
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
-            flex-wrap: wrap;
         }
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #0f4c5f, #2a9d8f);
+            background: linear-gradient(125deg, #0b3b3a, #0f766e, #14b8a6);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
         }
         .logo i {
-            color: #2a9d8f;
-            margin-left: 6px;
             background: none;
             background-clip: unset;
-            -webkit-background-clip: unset;
-            color: #2a9d8f;
+            color: #14b8a6;
+            font-size: 2rem;
         }
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.2rem;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 500;
-            color: #1e2a3e;
-            transition: 0.3s;
-            font-size: 1rem;
+            font-weight: 600;
+            color: #1f3b3c;
+            transition: 0.25s;
+            font-size: 0.95rem;
         }
         .nav-links a:hover {
-            color: #2a9d8f;
+            color: #0f766e;
         }
-        .btn-consult {
-            background: #0f4c5f;
+        .btn-nav {
+            background: #0f766e;
             color: white !important;
-            padding: 0.5rem 1.3rem;
-            border-radius: 40px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 0.6rem 1.5rem;
+            border-radius: 44px;
+            transition: all 0.25s;
+            box-shadow: 0 5px 12px -5px rgba(15,118,110,0.4);
         }
-        .btn-consult:hover {
-            background: #2a9d8f;
+        .btn-nav:hover {
+            background: #14b8a6;
             transform: translateY(-2px);
         }
-        .mobile-menu-btn {
+        .mobile-menu {
             display: none;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             cursor: pointer;
-            color: #0f4c5f;
+            color: #0f766e;
         }
 
-        /* Hero Section */
+        /* Hero premium با گرادینت و پترن */
         .hero {
-            background: linear-gradient(120deg, #eef2f9 0%, #ffffff 100%);
-            padding: 4rem 0 5rem;
+            background: radial-gradient(circle at 10% 20%, rgba(15,118,110,0.03) 0%, rgba(255,255,255,0.98) 90%);
+            position: relative;
+            padding: 5rem 0 6rem;
+            overflow: hidden;
         }
-        .hero-grid {
+        .hero .container {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 4rem;
             flex-wrap: wrap;
         }
         .hero-content {
-            flex: 1;
+            flex: 1.2;
+        }
+        .hero-badge {
+            background: rgba(20,184,166,0.12);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
         }
         .hero-content h1 {
-            font-size: 2.8rem;
+            font-size: 3.4rem;
             font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 1.2rem;
-            color: #0a2b33;
+            line-height: 1.2;
+            background: linear-gradient(130deg, #0b3b3a, #115e59, #2c7a7b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.3rem;
         }
         .hero-content p {
-            font-size: 1.2rem;
-            color: #334e68;
+            font-size: 1.1rem;
+            color: #49676e;
             margin-bottom: 2rem;
+            max-width: 90%;
         }
         .hero-buttons {
             display: flex;
@@ -146,293 +163,264 @@
             flex-wrap: wrap;
         }
         .btn-primary {
-            background: #0f4c5f;
+            background: linear-gradient(95deg, #0f766e, #14b8a6);
             color: white;
-            padding: 0.9rem 2rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            padding: 0.9rem 2.2rem;
+            border-radius: 48px;
+            font-weight: 700;
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             border: none;
             cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 18px -6px rgba(15,118,110,0.5);
         }
         .btn-primary:hover {
-            background: #2a9d8f;
             transform: translateY(-3px);
+            box-shadow: 0 18px 28px -12px rgba(20,184,166,0.4);
         }
-        .btn-outline {
+        .btn-outline-lux {
             background: transparent;
-            border: 2px solid #0f4c5f;
-            color: #0f4c5f;
-            padding: 0.85rem 1.8rem;
-            border-radius: 40px;
-            font-weight: 600;
+            border: 1.5px solid #0f766e;
+            color: #0f766e;
+            padding: 0.85rem 2rem;
+            border-radius: 48px;
+            font-weight: 700;
             transition: 0.3s;
             text-decoration: none;
         }
-        .btn-outline:hover {
-            background: #0f4c5f;
+        .btn-outline-lux:hover {
+            background: #0f766e;
             color: white;
-        }
-        .hero-image {
-            flex: 1;
-            text-align: center;
+            border-color: #0f766e;
         }
         .hero-image img {
             max-width: 100%;
-            border-radius: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border-radius: 48px;
+            box-shadow: 0 35px 55px -25px rgba(0,0,0,0.2);
+            transition: 0.4s;
+        }
+        .stats-flex {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 0.8rem 1.8rem;
+            border: 1px solid rgba(20,184,166,0.2);
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f766e;
         }
 
-        /* sections */
+        /* Section headings */
         .section {
             padding: 5rem 0;
         }
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             margin-bottom: 1rem;
-            color: #0f4c5f;
+            background: linear-gradient(125deg, #1f3b3c, #0f766e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         .section-sub {
             text-align: center;
-            color: #5a6e7c;
+            color: #5d7a82;
             max-width: 700px;
             margin: 0 auto 3rem auto;
         }
-        /* کارت‌های خدمات */
+
+        /* کارت‌های خدماتی با هدر گرادیان */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.03);
+            border: 1px solid #eef3f0;
+            position: relative;
+            z-index: 1;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 2rem;
+            padding: 2px;
+            background: linear-gradient(145deg, rgba(20,184,166,0.2), transparent);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 38px -16px rgba(15,118,110,0.25);
+            border-color: #ccf0ea;
+        }
+        .service-icon {
+            font-size: 2.8rem;
+            background: linear-gradient(120deg, #0f766e, #2c7a7b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+        }
+
+        /* pricing cards premium */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 1rem;
         }
-        .service-card {
-            background: white;
-            border-radius: 28px;
-            padding: 2rem 1.5rem;
+        .plan-card-premium {
+            background: #fff;
+            border-radius: 2rem;
+            padding: 2rem;
+            transition: 0.3s;
+            border: 1px solid #e4f0ec;
+            position: relative;
+        }
+        .plan-card-premium.featured {
+            background: linear-gradient(135deg, #ffffff, #fbfefc);
+            border-top: 5px solid #14b8a6;
+            transform: scale(1.02);
+            box-shadow: 0 20px 35px -12px rgba(20,184,166,0.25);
+        }
+        .price-tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0f766e;
+        }
+        .btn-plan {
+            background: transparent;
+            border: 1.5px solid #0f766e;
+            border-radius: 2rem;
+            padding: 0.7rem;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-plan:hover {
+            background: #0f766e;
+            color: white;
+        }
+
+        /* نظرات حرفه‌ای */
+        .testi-card {
+            background: #ffffffd9;
+            backdrop-filter: blur(6px);
+            border-radius: 2rem;
+            padding: 2rem;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-            border: 1px solid #e9edf2;
+            box-shadow: 0 12px 28px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(20,184,166,0.1);
         }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-            border-color: #cbdbe0;
-        }
-        .service-icon {
-            font-size: 3rem;
-            color: #2a9d8f;
-            margin-bottom: 1rem;
-        }
-        .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-        /* فرم مشاوره */
-        .form-consult {
+
+        /* فرم لوکس */
+        .form-luxury {
             background: white;
-            border-radius: 32px;
+            border-radius: 2rem;
             padding: 2.5rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.15);
+            border: 1px solid #e1f0ec;
         }
-        .form-group {
-            margin-bottom: 1.5rem;
+        .form-row-double {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1.3rem;
+            border-radius: 2rem;
+            border: 1px solid #dce9e5;
             font-family: 'Vazir', sans-serif;
-            font-size: 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 28px;
             transition: 0.2s;
-            background: #fefefe;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus {
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 4px rgba(20,184,166,0.1);
             outline: none;
-            border-color: #2a9d8f;
-            box-shadow: 0 0 0 3px rgba(42,157,143,0.2);
         }
-        .btn-submit {
-            background: #0f4c5f;
+        .btn-submit-grad {
+            background: linear-gradient(95deg, #0f766e, #14b8a6);
             width: 100%;
+            border-radius: 3rem;
             padding: 1rem;
-            font-size: 1.1rem;
             font-weight: bold;
+            color: white;
             border: none;
-            border-radius: 40px;
-            color: white;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .btn-submit:hover {
-            background: #2a9d8f;
+
+        /* Footer مدرن */
+        .footer-premium {
+            background: #0a2625;
+            color: #bcd9d5;
+            padding: 3rem 0 2rem;
         }
-        /* محصولات بیمه عمر */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .plan-card {
-            background: white;
-            border-radius: 28px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.05);
-            transition: all 0.2s;
-            border: 1px solid #eef2f6;
-        }
-        .plan-card.featured {
-            border-top: 5px solid #2a9d8f;
-            transform: scale(1.02);
-            box-shadow: 0 20px 30px -12px rgba(42,157,143,0.2);
-        }
-        .price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #0f4c5f;
-            margin: 1rem 0;
-        }
-        .price span {
-            font-size: 0.9rem;
-            font-weight: normal;
-        }
-        .plan-features {
-            list-style: none;
-            margin: 1.5rem 0;
-            text-align: right;
-        }
-        .plan-features li {
-            margin: 0.6rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .plan-features i {
-            color: #2a9d8f;
-            width: 22px;
-        }
-        /* درباره ما */
-        .about-content {
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .about-text {
-            flex: 1;
-        }
-        .about-stats {
-            flex: 1;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .stat-box {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 28px;
-            text-align: center;
-            min-width: 140px;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
-        }
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #2a9d8f;
-        }
-        /* footer */
-        footer {
-            background: #0a2b33;
-            color: #cbd5e6;
-            padding: 3rem 0 1rem;
-            margin-top: 2rem;
-        }
-        .footer-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-        .footer-col a {
-            color: #b9cddf;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-        }
-        .social-icons a {
-            display: inline-block;
-            margin-left: 1rem;
-            font-size: 1.4rem;
-            color: white;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #1f4b5e;
-            margin-top: 2rem;
-            font-size: 0.85rem;
-        }
-        /* responsive */
+
         @media (max-width: 900px) {
             .nav-links {
                 display: none;
-                width: 100%;
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1rem 0;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .mobile-menu-btn {
+            .mobile-menu {
                 display: block;
             }
+            .nav-links.active-mobile {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                padding: 1.5rem;
+                border-radius: 2rem;
+                margin-top: 0.5rem;
+                backdrop-filter: blur(12px);
+            }
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.4rem;
+            }
+            .form-row-double {
+                grid-template-columns: 1fr;
             }
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 0 18px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-        .toast-message {
+        .toast-msg {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: #2a9d8f;
+            background: #0f766e;
             color: white;
-            padding: 12px 24px;
-            border-radius: 40px;
-            z-index: 1100;
+            padding: 12px 26px;
+            border-radius: 50px;
+            z-index: 1200;
             font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             opacity: 0;
             transition: 0.3s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
             pointer-events: none;
-        }
-        .toast-message.show {
-            opacity: 1;
         }
     </style>
 </head>
@@ -440,274 +428,141 @@
 
 <div class="navbar">
     <div class="container nav-container">
-        <div class="logo">
-            <i class="fas fa-shield-alt"></i> بیمه زندگی آرمان
-        </div>
+        <div class="logo"><i class="fas fa-shield-virus"></i> آرمان آتیه</div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">خانه</a></li>
-            <li><a href="#services">خدمات</a></li>
-            <li><a href="#plans">بیمه‌های عمر</a></li>
+            <li><a href="#services">خدمات تخصصی</a></li>
+            <li><a href="#plans">طرح‌های برتر</a></li>
+            <li><a href="#testimonials">بازخوردها</a></li>
             <li><a href="#about">درباره ما</a></li>
-            <li><a href="#consult" class="btn-consult">مشاوره رایگان</a></li>
+            <li><a href="#consult" class="btn-nav">مشاوره فوری</a></li>
         </ul>
-        <div class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></div>
     </div>
 </div>
 
-<!-- Hero Section -->
+<!-- Hero Section لوکس -->
 <section class="hero" id="home">
-    <div class="container hero-grid">
-        <div class="hero-content">
-            <h1>آینده مالی خود را با <br> بیمه عمر هوشمند بسازید</h1>
-            <p>مشاوره تخصصی، پلن‌های متنوع سرمایه‌گذاری و آرامش خاطر برای شما و خانواده‌تان. همین امروز قدم اول را بردارید.</p>
+    <div class="container">
+        <div class="hero-content" data-aos="fade-right">
+            <div class="hero-badge"><i class="fas fa-chart-line"></i> رتبه برتر مشاوره بیمه عمر ۱۴۰۴</div>
+            <h1>ثروت‌آفرینی هوشمند با بیمه عمر مدرن</h1>
+            <p>با پلن‌های اختصاصی آرمان آتیه، هم از زندگی خود محافظت کنید و هم سرمایه‌ای ماندگار برای آینده بسازید. مشاوره رایگان با نخبگان صنعت.</p>
             <div class="hero-buttons">
-                <a href="#consult" class="btn-primary"><i class="fas fa-headset"></i> مشاوره فوری</a>
-                <a href="#plans" class="btn-outline"><i class="fas fa-chart-line"></i> مشاهده طرح‌ها</a>
+                <a href="#consult" class="btn-primary"><i class="fas fa-headset"></i> مشاوره اختصاصی</a>
+                <a href="#plans" class="btn-outline-lux"><i class="fas fa-chart-simple"></i> مقایسه بازدهی</a>
+            </div>
+            <div class="stats-flex">
+                <div class="stat-item"><span class="stat-number">+۳۲,۰۰۰</span><br>بیمه‌گذار خرسند</div>
+                <div class="stat-item"><span class="stat-number">۹۹٪</span><br>رضایت از خدمات</div>
+                <div class="stat-item"><span class="stat-number">۲۲</span><br>طرح سرمایه‌گذاری</div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="https://placehold.co/600x450/edf2f7/2c7da0?text=بیمه+عمر+آرمان&font=iran" alt="مشاوره بیمه عمر">
+        <div class="hero-image" data-aos="fade-left">
+            <img src="https://placehold.co/580x500/eef2f1/0f766e?text=Life+Insurance+Premium+Advisor&font=iran" alt="مشاوره بیمه عمر حرفه‌ای">
         </div>
     </div>
 </section>
 
-<!-- خدمات مشاوره و راهنمایی -->
+<!-- خدمات راهنمایی و مشاوره -->
 <section class="section" id="services">
     <div class="container">
-        <h2 class="section-title">خدمات تخصصی ما</h2>
-        <p class="section-sub">همراه شما از انتخاب بهترین طرح تا دریافت خسارت، در تمام مسیر حفاظت از سرمایه و آینده</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-user-tie"></i></div>
-                <h3>مشاوره رایگان</h3>
-                <p>ارزیابی وضعیت مالی و ارائه بهترین گزینه‌های بیمه عمر مطابق با نیاز و بودجه شما.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
-                <h3>امکان سنجی حرفه‌ای</h3>
-                <p>تحلیل دقیق تعهدات، پوشش‌ها، سرمایه‌گذاری و تطبیق با هدف‌های بلندمدت شما.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                <h3>فروش آنلاین بیمه</h3>
-                <p>خرید آسان و امن بیمه عمر با بهترین نرخ‌ها و شرایط ویژه بدون نیاز به حضور فیزیکی.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-life-ring"></i></div>
-                <h3>پشتیبانی دائمی</h3>
-                <p>تیم مشاوران ما همیشه در کنار شماست تا در لحظه به سوالات پاسخ دهند و راهنمایی کنند.</p>
-            </div>
+        <h2 class="section-title" data-aos="fade-up">راهنمایی و مشاوره تخصصی بیمه عمر</h2>
+        <p class="section-sub" data-aos="fade-up">ما در کنار شما مسیر درست انتخاب طرح سرمایه‌گذاری و پوشش‌های بیمه‌ای را هموار می‌کنیم.</p>
+        <div class="services-grid" data-aos="fade-up">
+            <div class="service-card"><div class="service-icon"><i class="fas fa-microphone-alt"></i></div><h3>مشاوره فردی</h3><p>بررسی دقیق وضعیت مالی و هدف‌گذاری بلندمدت، متناسب با سن و درآمد.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>مدیریت بهینه سرمایه</h3><p>بهترین ترکیب بیمه و سرمایه‌گذاری با نرخ بازدهی تضمینی.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div><h3>فروش هوشمند</h3><p>صدور آنلاین بیمه‌نامه در کمتر از ۱۵ دقیقه با بهترین تعرفه‌ها.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-concierge-bell"></i></div><h3>پشتیبانی VIP</h3><p>مدیریت خسارت و پاسخگویی ۲۴ ساعته توسط کارشناسان ارشد.</p></div>
         </div>
     </div>
 </section>
 
-<!-- پلن‌های بیمه عمر فروش -->
-<section class="section" id="plans" style="background: #f8fafd;">
+<!-- پلن‌های ویژه بیمه -->
+<section class="section" id="plans" style="background: #fafefc;">
     <div class="container">
-        <h2 class="section-title">طرح‌های ویژه بیمه عمر</h2>
-        <p class="section-sub">با توجه به نیاز شما، از طرح‌های پایه تا سرمایه‌گذاری بلندمدت را انتخاب کنید</p>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <i class="fas fa-seedling" style="font-size: 2.5rem; color:#2a9d8f;"></i>
-                <h3>طرح پایه آرامش</h3>
-                <div class="price">از ۱,۲۰۰,۰۰۰ <span>تومان/ماه</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check-circle"></i> پوشش فوت و نقص عضو</li>
-                    <li><i class="fas fa-check-circle"></i> بازپرداخت حق بیمه در پایان دوره</li>
-                    <li><i class="fas fa-check-circle"></i> امکان افزایش پوشش</li>
-                </ul>
-                <a href="#consult" class="btn-outline" style="padding:0.6rem 1rem;">درخواست مشاوره</a>
-            </div>
-            <div class="plan-card featured">
-                <i class="fas fa-chart-line" style="font-size: 2.5rem; color:#0f4c5f;"></i>
-                <h3>طرح سرمایه‌گذاری طلایی</h3>
-                <div class="price">از ۲,۵۰۰,۰۰۰ <span>تومان/ماه</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check-circle"></i> بازدهی سرمایه‌گذاری تا ۲۲٪</li>
-                    <li><i class="fas fa-check-circle"></i> پوشش تکمیلی بیماری‌های خاص</li>
-                    <li><i class="fas fa-check-circle"></i> خروج زودهنگام با سود تضمینی</li>
-                </ul>
-                <a href="#consult" class="btn-primary" style="padding:0.6rem 1rem; background:#2a9d8f;">دریافت پیشنهاد ویژه</a>
-            </div>
-            <div class="plan-card">
-                <i class="fas fa-university" style="font-size: 2.5rem; color:#2a9d8f;"></i>
-                <h3>طرح خانواده و آتیه</h3>
-                <div class="price">از ۱,۸۰۰,۰۰۰ <span>تومان/ماه</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check-circle"></i> پوشش همسر و فرزندان</li>
-                    <li><i class="fas fa-check-circle"></i> وام قرض‌الحسنه از حق بیمه</li>
-                    <li><i class="fas fa-check-circle"></i> معافیت مالیاتی حق بیمه</li>
-                </ul>
-                <a href="#consult" class="btn-outline" style="padding:0.6rem 1rem;">اطلاعات بیشتر</a>
-            </div>
+        <h2 class="section-title" data-aos="fade-up">طرح‌های بیمه عمر ممتاز</h2>
+        <p class="section-sub" data-aos="fade-up">انتخاب هوشمندانه برای ساختن آینده‌ای امن و پررونق</p>
+        <div class="plans-grid" data-aos="fade-up">
+            <div class="plan-card-premium"><i class="fas fa-feather-alt" style="font-size: 2rem; color:#0f766e;"></i><h3>طرح آتیه‌ساز</h3><div class="price-tag">از ۱,۱۰۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle" style="color:#14b8a6;"></i> پوشش فوت و نقص عضو</li><li><i class="fas fa-check-circle"></i> بازگشت ۱۰۰٪ حق بیمه</li><li><i class="fas fa-check-circle"></i> تخفیف گروهی خانواده</li></ul><button class="btn-plan" onclick="location.href='#consult'">درخواست مشاوره</button></div>
+            <div class="plan-card-premium featured"><i class="fas fa-gem" style="font-size: 2rem; color:#f59e0b;"></i><h3>طلایی آرمان</h3><div class="price-tag">از ۲,۴۰۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle"></i> سود سالانه تضمینی ۲۱٪</li><li><i class="fas fa-check-circle"></i> پوشش بیماری‌های خاص</li><li><i class="fas fa-check-circle"></i> وام فوری تا ۸۰٪ سرمایه</li></ul><button class="btn-plan" style="background:#0f766e;color:white; border:none;" onclick="location.href='#consult'">دریافت پیشنهاد ویژه</button></div>
+            <div class="plan-card-premium"><i class="fas fa-tree" style="font-size: 2rem; color:#0f766e;"></i><h3>نسل فردا</h3><div class="price-tag">از ۱,۷۵۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle"></i> پوشش تحصیلی فرزندان</li><li><i class="fas fa-check-circle"></i> معافیت مالیاتی ۳۰٪</li><li><i class="fas fa-check-circle"></i> خروج بدون جریمه پس از ۳ سال</li></ul><button class="btn-plan" onclick="location.href='#consult'">مشاوره رایگان</button></div>
         </div>
     </div>
 </section>
 
-<!-- درباره ما و آمار -->
+<!-- اسلایدر نظرات حرفه‌ای -->
+<section class="section" id="testimonials">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">نظرات مشتریان آرمان آتیه</h2>
+        <div class="swiper testimonials-swiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p style="margin:1rem 0;">مشاوره حرفه‌ای و دقیق، بهترین طرح سرمایه‌گذاری رو بر اساس نیازم انتخاب کردن. خیلی راضیم.</p><strong>- دکتر فاطمه کریمی</strong><div><i class="fas fa-star" style="color: #fbbf24;"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p>صدور بیمه فوق‌العاده سریع و پشتیبانی عالی. واقعاً به من احساس امنیت داد.</p><strong>- مهندس رضا کمالی</strong><div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p>طرح طلایی آرمان بازدهی فوق‌العاده‌ای داشت و تیم مشاور بسیار متعهد.</p><strong>- سعید جمالی</strong><div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div></div></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- About با تیم حرفه‌ای -->
 <section class="section" id="about">
     <div class="container">
-        <h2 class="section-title">چرا بیمه زندگی آرمان؟</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p style="font-size:1.1rem; margin-bottom:1rem;">بیش از یک دهه تجربه درخشان در صنعت بیمه عمر و سرمایه‌گذاری، همراه با تیمی از مشاوران خبره و مجوز رسمی از بیمه مرکزی. ما به شما کمک می‌کنیم تا با کمترین ریسک، بهترین بازدهی را برای آینده خود و عزیزانتان رقم بزنید.</p>
-                <p>هدف ما شفافیت، صداقت و همراهی تا لحظه دریافت تمامی مزایای بیمه‌نامه شماست. رضایت مشتریان، افتخار ماست.</p>
-                <a href="#consult" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">مشاوره بگیرید</a>
-            </div>
-            <div class="about-stats">
-                <div class="stat-box"><div class="stat-number">+۱۵,۰۰۰</div><div>بیمه‌شده فعال</div></div>
-                <div class="stat-box"><div class="stat-number">۹۸٪</div><div>رضایت مشتریان</div></div>
-                <div class="stat-box"><div class="stat-number">۲۴/۷</div><div>پشتیبانی آنلاین</div></div>
-            </div>
+        <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;">
+            <div data-aos="fade-right" style="flex:1;"><img src="https://placehold.co/500x460/eef2f5/0f766e?text=Expert+Advisors+Team" style="width:100%; border-radius: 2.5rem; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);" alt="تیم کارشناسی"></div>
+            <div data-aos="fade-left" style="flex:1;"><h2 style="font-size: 2rem; font-weight: 800;">تیم مشاوران خبره با مجوز رسمی</h2><p style="margin:1rem 0;">آرمان آتیه با بهره‌مندی از برترین مشاوران مالی و بیمه، موفق به کسب رضایت هزاران خانواده شده است. شفافیت، صداقت و سودآوری پایدار اولویت ماست.</p><a href="#consult" class="btn-primary"><i class="fas fa-calendar-week"></i> رزرو نوبت مشاوره</a></div>
         </div>
     </div>
 </section>
 
-<!-- فرم مشاوره و فروش -->
-<section class="section" id="consult" style="background: linear-gradient(115deg, #eef5f7 0%, #ffffff 100%);">
+<!-- فرم فروش و مشاوره پیشرفته -->
+<section class="section" id="consult" style="background: #f4fbf9;">
     <div class="container">
-        <h2 class="section-title">درخواست مشاوره رایگان و استعلام قیمت</h2>
-        <p class="section-sub">کارشناسان ما ظرف ۲۴ ساعت با شما تماس می‌گیرند و بهترین طرح بیمه عمر را متناسب با شرایطتان پیشنهاد می‌دهند.</p>
-        <div class="form-consult">
-            <form id="consultForm">
-                <div class="form-group">
-                    <input type="text" id="fullname" placeholder="نام و نام خانوادگی" required>
+        <h2 class="section-title" data-aos="fade-up">درخواست مشاوره و فروش بیمه عمر</h2>
+        <p class="section-sub" data-aos="fade-up">همین حالا فرم را تکمیل کنید، کارشناسان ما ظرف ۴ ساعت با شما تماس می‌گیرند.</p>
+        <div class="form-luxury" data-aos="zoom-in">
+            <form id="premiumForm">
+                <div class="form-row-double">
+                    <div class="form-group"><input type="text" id="fullname" placeholder="نام و نام خانوادگی" required></div>
+                    <div class="form-group"><input type="tel" id="phone" placeholder="شماره همراه" required></div>
                 </div>
-                <div class="form-group">
-                    <input type="tel" id="phone" placeholder="شماره تماس" required>
+                <div class="form-row-double">
+                    <div class="form-group"><select id="planSelect"><option value="">انتخاب طرح اولیه</option><option>طرح آتیه‌ساز</option><option>طلایی آرمان</option><option>نسل فردا</option><option>نیاز به مشاوره تخصصی</option></select></div>
+                    <div class="form-group"><input type="text" placeholder="بودجه پیشنهادی ماهانه (اختیاری)"></div>
                 </div>
-                <div class="form-group">
-                    <select id="planType">
-                        <option value="" disabled selected>نوع بیمه مورد نظر</option>
-                        <option>طرح پایه آرامش</option>
-                        <option>طرح سرمایه‌گذاری طلایی</option>
-                        <option>طرح خانواده و آتیه</option>
-                        <option>نیاز به مشاوره تخصصی</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea rows="3" id="message" placeholder="توضیحات یا سوال شما ..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit"><i class="fas fa-phone-alt"></i> ثبت درخواست مشاوره</button>
-                <p style="font-size:0.8rem; text-align:center; margin-top:1rem;">اطلاعات شما نزد ما محفوظ است و صرفا برای هماهنگی استفاده می‌شود.</p>
+                <div class="form-group"><textarea rows="3" placeholder="توضیحات یا سوال شما ..."></textarea></div>
+                <button type="submit" class="btn-submit-grad"><i class="fas fa-shield-alt"></i> ثبت درخواست مشاوره فوری</button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
+<footer class="footer-premium">
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4><i class="fas fa-shield-alt"></i> بیمه زندگی آرمان</h4>
-                <p>ارائه دهنده تخصصی بیمه‌های عمر و سرمایه‌گذاری با بالاترین تعهدات و پشتیبانی هوشمند.</p>
-            </div>
-            <div class="footer-col">
-                <h4>دسترسی سریع</h4>
-                <a href="#home">خانه</a>
-                <a href="#services">خدمات</a>
-                <a href="#plans">طرح‌های بیمه</a>
-                <a href="#consult">مشاوره</a>
-            </div>
-            <div class="footer-col">
-                <h4>ارتباط با ما</h4>
-                <a href="tel:02112345678"><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</a>
-                <a href="mailto:info@armanlife.ir"><i class="fas fa-envelope"></i> info@armanlife.ir</a>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+            <div><h4><i class="fas fa-crown"></i> آرمان آتیه</h4><p>پیشرو در مشاوره بیمه عمر و سرمایه‌گذاری امن.</p></div>
+            <div><h4>دسترسی سریع</h4><a href="#home" style="color:#bcd9d5; display:block;">خانه</a><a href="#services">خدمات</a><a href="#plans">طرح‌ها</a><a href="#consult">مشاوره</a></div>
+            <div><h4>تماس با ما</h4><p><i class="fas fa-phone-alt"></i> ۰۲۱-۵۶۴۳۲۱۰</p><p><i class="fas fa-envelope"></i> support@armanatiyeh.ir</p></div>
         </div>
-        <div class="copyright">
-            <p>© ۱۴۰۴ تمامی حقوق برای بیمه زندگی آرمان محفوظ است. | طراحی حرفه‌ای با هدف آرامش خاطر</p>
-        </div>
+        <div style="text-align:center; border-top:1px solid #1f5852; margin-top:2rem; padding-top:1.5rem;">© ۱۴۰۴ تمامی حقوق متعلق به آرمان آتیه است | طراحی حرفه‌ای با استانداردهای روز</div>
     </div>
 </footer>
 
-<div id="toastMsg" class="toast-message">✅ درخواست شما با موفقیت ثبت شد، کارشناسان تماس می‌گیرند.</div>
+<div id="toastMsg" class="toast-msg">✅ درخواست مشاوره با موفقیت ثبت شد.</div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // موبایل منو
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    mobileBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
-    // smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === "#") return;
-            const targetElem = document.querySelector(targetId);
-            if (targetElem) {
-                e.preventDefault();
-                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // بستن منو موبایل در صورت باز بودن
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-            }
-        });
-    });
-
-    // نمایش toast
-    function showToast(message) {
-        const toast = document.getElementById('toastMsg');
-        toast.textContent = message || "✅ درخواست شما با موفقیت ثبت شد، کارشناسان تماس می‌گیرند.";
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
-    }
-
-    // مدیریت فرم مشاوره
-    const consultForm = document.getElementById('consultForm');
-    consultForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const fullname = document.getElementById('fullname').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        if (!fullname || !phone) {
-            showToast("⚠️ لطفاً نام و شماره تماس را وارد کنید.");
-            return;
-        }
-        const planSelect = document.getElementById('planType');
-        const selectedPlan = planSelect.value;
-        // ذخیره در کنسول یا ارسال به سرور (شبیه‌سازی ذخیره)
-        console.log({
-            fullname,
-            phone,
-            plan: selectedPlan,
-            message: document.getElementById('message').value
-        });
-        // نمایش پیام موفقیت
-        showToast("✅ درخواست مشاوره شما ثبت شد! به زودی با شما تماس می‌گیریم.");
-        consultForm.reset();
-        // scroll به بالای صفحه یا باقی ماندن
-    });
-    
-    //اضافه کردن قابلیت کلیک روی کارت‌های بیمه برای پیام مستقیم (اختیاری)
-    const planCards = document.querySelectorAll('.plan-card .btn-outline, .plan-card .btn-primary');
-    planCards.forEach(btn => {
-        btn.addEventListener('click', function(ev) {
-            ev.preventDefault();
-            const consultSection = document.querySelector('#consult');
-            if(consultSection) consultSection.scrollIntoView({ behavior: 'smooth' });
-            showToast("👈 لطفاً فرم مشاوره را تکمیل کنید تا کارشناسان بهترین طرح را به شما پیشنهاد دهند.");
-        });
-    });
-    
-    // تغییر تصویر placeholder در صورت عدم لود (برای نمایش بهتر)
-    const heroImg = document.querySelector('.hero-image img');
-    if(heroImg && heroImg.src.includes('placehold.co')) {
-        heroImg.alt = "مشاوره بیمه عمر حرفه‌ای";
-    }
+    AOS.init({ duration: 800, once: true, offset: 80 });
+    const mobileBtn = document.getElementById('mobileMenu');
+    const navMenu = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active-mobile'));
+    new Swiper('.testimonials-swiper', { slidesPerView: 1, spaceBetween: 30, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
+    function showToastMsg(msg) { const toast = document.getElementById('toastMsg'); toast.textContent = msg; toast.style.opacity = '1'; setTimeout(() => toast.style.opacity = '0', 4000); }
+    const form = document.getElementById('premiumForm');
+    form.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('fullname').value.trim(); const phone = document.getElementById('phone').value.trim(); if (!name || !phone) { showToastMsg("⚠️ لطفاً نام و شماره تماس را وارد کنید."); return; } showToastMsg("✅ درخواست شما ثبت شد، کارشناسان تماس می‌گیرند."); form.reset(); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const target = document.querySelector(this.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); if (navMenu.classList.contains('active-mobile')) navMenu.classList.remove('active-mobile'); } }); });
 </script>
 </body>
 </html>
