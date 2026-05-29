@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>فرصت ویژه بیمه عمر | از قربان تا غدیر</title>
+    <title>طلای پاسارگاد | کمپین ویژه قربان تا غدیر - بیمه عمر مبتنی بر طلا</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Vazir + Amiri برای حس اصالت -->
+    <!-- Google Fonts: Vazir + Amiri -->
     <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -19,73 +21,61 @@
 
         body {
             font-family: 'Vazir', 'Amiri', serif;
-            background: linear-gradient(135deg, #0a2e1f 0%, #1a4d2e 50%, #0f3b24 100%);
+            background: linear-gradient(145deg, #0a2e1f 0%, #1a4d2e 100%);
             min-height: 100vh;
-            padding: 2rem 1rem;
-            position: relative;
             overflow-x: hidden;
         }
 
-        /* تزئینات پس‌زمینه اسلامی */
+        /* تزئینات اسلامی پس زمینه */
         body::before {
             content: "﷽";
             font-family: 'Amiri', serif;
-            font-size: 18vw;
+            font-size: 22vw;
             position: fixed;
             bottom: -5%;
             left: -5%;
-            opacity: 0.03;
+            opacity: 0.04;
             color: #d4af37;
             pointer-events: none;
             z-index: 0;
         }
 
-        body::after {
-            content: "🌙 ★ ✨";
-            font-size: 10rem;
-            position: fixed;
-            top: 0;
-            right: 0;
-            opacity: 0.04;
-            pointer-events: none;
-        }
-
         .container {
-            max-width: 900px;
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 0 24px;
             position: relative;
             z-index: 2;
         }
 
-        /* هدر کمپین */
+        /* Header کمپین */
         .campaign-header {
             text-align: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 248, 225, 0.95);
+            padding: 2rem 1rem;
+            background: rgba(255, 248, 235, 0.97);
             border-radius: 60px 60px 40px 40px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            margin: 1.5rem 0 2rem;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.3);
             border-bottom: 4px solid #d4af37;
-            backdrop-filter: blur(2px);
         }
 
         .badge-islamic {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: linear-gradient(135deg, #c9a32d, #e8c468);
-            padding: 0.4rem 1.5rem;
-            border-radius: 40px;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
             color: #1e3a2f;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 1rem;
         }
 
         .campaign-header h1 {
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #2d6a4f, #1b4d3e);
+            background: linear-gradient(135deg, #2d6a4f, #1b4d3e, #d4af37);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -93,48 +83,123 @@
         }
 
         .date-range {
-            font-family: 'Amiri', serif;
             background: #fef5e7;
             display: inline-block;
-            padding: 0.4rem 1.8rem;
+            padding: 0.5rem 2rem;
             border-radius: 50px;
             font-weight: 600;
-            color: #b57c1c;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .date-range i {
-            margin: 0 6px;
+            color: #b87c1a;
+            margin-top: 0.8rem;
         }
 
         .offer-banner {
             background: linear-gradient(120deg, #d4af37, #f3d382);
-            padding: 0.8rem;
-            border-radius: 32px;
+            padding: 1rem;
+            border-radius: 40px;
             text-align: center;
             color: #2c4b3a;
             font-weight: 800;
-            margin: 1.2rem 0;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
         }
 
-        /* فرم اصلی */
-        .form-wrapper {
-            background: rgba(255, 255, 255, 0.98);
+        /* بخش اصلی طلای پاسارگاد */
+        .gold-showcase {
+            background: rgba(255,255,245,0.97);
             border-radius: 48px;
-            padding: 2rem 2rem 2.5rem;
-            box-shadow: 0 35px 55px -20px rgba(0,0,0,0.4);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            backdrop-filter: blur(4px);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
         }
 
-        .section-title-form {
-            font-size: 1.7rem;
-            font-weight: 700;
-            border-right: 5px solid #d4af37;
-            padding-right: 1rem;
+        .section-title-gold {
+            font-size: 2rem;
+            font-weight: 800;
+            border-right: 6px solid #d4af37;
+            padding-right: 1.2rem;
             margin-bottom: 1.5rem;
             color: #1e4d38;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gold-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #ffffff, #fef9ef);
+            border-radius: 32px;
+            padding: 1.8rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #f0e1b0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(212,175,55,0.3);
+            border-color: #d4af37;
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2d6a4f;
+        }
+
+        /* جدول مقایسه */
+        .compare-table {
+            background: #fefcf5;
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .compare-table table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ede6d5;
+        }
+
+        .compare-table th {
+            background: #2d6a4f;
+            color: white;
+            font-weight: 700;
+        }
+
+        .compare-table tr:hover {
+            background: #f9f3e3;
+        }
+
+        .check-yes {
+            color: #2d6a4f;
+            font-size: 1.2rem;
+        }
+
+        /* فرم ثبت‌نام کمپین */
+        .form-wrapper {
+            background: rgba(255,255,250,0.98);
+            border-radius: 48px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
         }
 
         .form-grid {
@@ -155,11 +220,7 @@
 
         .input-group label {
             font-weight: 600;
-            font-size: 0.85rem;
             color: #2b5e42;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .input-group input, .input-group select, .input-group textarea {
@@ -168,86 +229,62 @@
             border: 1.5px solid #e2dccd;
             font-family: 'Vazir', sans-serif;
             background: #fefcf7;
-            transition: all 0.25s;
-            font-size: 0.95rem;
         }
 
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+        .input-group input:focus {
             outline: none;
             border-color: #d4af37;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-        }
-
-        /* گروه رادیویی */
-        .radio-group {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.4rem;
-        }
-        .radio-group label {
-            font-weight: normal;
-            gap: 5px;
-            cursor: pointer;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
         }
 
         .btn-submit {
             width: 100%;
-            background: linear-gradient(95deg, #2d6a4f, #1b4d3e);
+            background: linear-gradient(95deg, #2d6a4f, #d4af37);
             color: white;
             padding: 1rem;
             font-size: 1.2rem;
             font-weight: 800;
             border: none;
             border-radius: 48px;
-            margin-top: 1rem;
             cursor: pointer;
             transition: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            box-shadow: 0 8px 18px -6px #1b4d3e;
+            margin-top: 1rem;
         }
 
         .btn-submit:hover {
-            background: linear-gradient(95deg, #1b4d3e, #d4af37);
             transform: translateY(-3px);
             box-shadow: 0 15px 25px -10px #d4af37;
         }
 
-        /* المان‌های تزئینی قربان و غدیر */
-        .islamic-decoration {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.5rem;
-            color: #d4af37;
-        }
-
         .gift-box {
-            background: #f9f1e0;
+            background: linear-gradient(135deg, #fef5e7, #fff6e0);
             border-radius: 28px;
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: center;
-            margin-top: 1.5rem;
             border: 1px dashed #d4af37;
+            margin-top: 1.5rem;
         }
 
-        .highlight {
-            color: #b87c1a;
-            font-weight: 800;
+        /* اسلایدر نظرات */
+        .testimonial-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
         footer {
             text-align: center;
-            margin-top: 2rem;
-            color: rgba(255,255,220,0.7);
-            font-size: 0.8rem;
+            padding: 2rem;
+            color: rgba(255,245,200,0.8);
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
@@ -255,180 +292,230 @@
                 grid-column: span 1;
             }
             .campaign-header h1 {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
             }
-            .form-wrapper {
-                padding: 1.5rem;
+            .section-title-gold {
+                font-size: 1.5rem;
             }
-        }
-
-        /* تایم‌لاین مخصوص مناسبت */
-        .timeline-note {
-            background: #eef3e9;
-            border-radius: 28px;
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 1.8rem;
-            font-weight: 500;
         }
 
         .toast-message {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 25px;
             background: #2d6a4f;
             color: #ffefc0;
-            padding: 12px 28px;
+            padding: 12px 24px;
             border-radius: 60px;
-            font-weight: 600;
             z-index: 2000;
             opacity: 0;
             transition: 0.3s;
             pointer-events: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            border-right: 5px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-right: 4px solid #d4af37;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- هدر کمپین: عید قربان تا عید غدیر -->
+    <!-- Header کمپین عید قربان تا غدیر -->
     <div class="campaign-header" data-aos="fade-down">
         <div class="badge-islamic">
-            <i class="fas fa-mosque"></i> مناسبت مبارک <i class="fas fa-star-and-crescent"></i>
+            <i class="fas fa-mosque"></i> ویژه‌نامه عید قربان تا عید غدیر <i class="fas fa-star-and-crescent"></i>
         </div>
-        <h1>🎁 طرح ویژه «از قربان تا غدیر» 🕋</h1>
+        <h1>✨ طلای پاسارگاد ✨<br>بیمه عمر مبتنی بر طلا | سرمایه‌ای به سنگینی طلا، امنیتی به وسعت عمر</h1>
         <div class="date-range">
-            <i class="fas fa-calendar-alt"></i> از عید سعید قربان تا عید سعید غدیر خم 
-            <i class="fas fa-arrow-left"></i> فرصتی برای آرامش و سرمایه‌گذاری
+            <i class="fas fa-calendar-alt"></i> از عید سعید قربان تا عید سعید غدیر خم | فرصتی استثنایی برای حفظ ارزش سرمایه
         </div>
         <div class="offer-banner" data-aos="zoom-in">
-            <i class="fas fa-gift"></i> هدیه معنوی + تخفیف ویژه عیدانه &nbsp;|&nbsp; <strong>۲۰٪ کاهش حق بیمه ماهانه</strong> <i class="fas fa-hand-sparkles"></i>
+            <i class="fas fa-gift"></i> هدیه کمپین: کاهش ۲۵٪ حق بیمه ماهانه + مشاوره تخصصی رایگان + قرعه‌کشی سکه بهار آزادی
         </div>
     </div>
 
-    <!-- فرم ثبت‌نام بیمه عمر با تم قربان و غدیر -->
+    <!-- بخش اصلی: معرفی بیمه عمر مبتنی بر طلا پاسارگاد -->
+    <div class="gold-showcase" data-aos="fade-up">
+        <div class="section-title-gold">
+            <i class="fas fa-gem" style="color: #d4af37;"></i> بیمه عمر «طلای پاسارگاد» چیست؟
+        </div>
+        <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            بیمه عمر مبتنی بر طلا شرکت پاسارگاد، نوآوری‌ای بین‌ظیر در صنعت بیمه کشور است. در این طرح، حق بیمه‌ای که می‌پردازید، برخلاف بیمه‌های عمر سنتی که صرفاً با نرخ سود ثابت (مثلاً ۱۶٪) محاسبه می‌شود، <strong class="highlight-number" style="font-size:1rem;">به ارزش روز طلای ۲۴ عیار وابسته است</strong> [citation:5]. این یعنی سرمایه شما در برابر تورم و نوسانات اقتصادی حفظ می‌شود و همزمان از پوشش‌های کامل بیمه عمر بهره‌مند می‌گردید.
+        </p>
+        <p style="font-size: 1rem; line-height: 1.7; color: #2c5a45;">
+            با انتخاب «طلای پاسارگاد» در این ایام مبارک، دیگر نگران کاهش ارزش پول خود نیستید؛ چراکه اندوخته شما گره‌خورده به امن‌ترین دارایی جهان یعنی <strong class="highlight-number" style="font-size:1rem;">طلا</strong> است. شرکت بیمه پاسارگاد با رتبه توانگری بالای خود، این فرصت را برای شما فراهم کرده تا هم از مزایای بیمه عمر (پوشش فوت، بیماری‌های خاص، ازکارافتادگی و ...) برخوردار شوید و هم سرمایه‌ای ماندگار و طلایی برای آینده خود و خانواده‌تان بسازید [citation:2][citation:5].
+        </p>
+
+        <!-- ویژگی‌های کلیدی به صورت کارت‌های طلایی -->
+        <div class="gold-features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                <h3>مبنای طلا</h3>
+                <p>ارزش اندوخته شما بر اساس <strong>قیمت روز طلای ۲۴ عیار</strong> محاسبه می‌شود و در برابر تورم حفظ می‌گردد [citation:5].</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>پوشش کامل بیمه‌ای</h3>
+                <p>فوت به هر علت (تا ۳۶۰ برابر حق بیمه ماهانه)، بیماری‌های خاص (۵ بیماری اصلی)، ازکارافتادگی و نقص عضو [citation:1][citation:2].</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <h3>وام بدون ضامن</h3>
+                <p>امکان دریافت وام <strong>تا ۹۰٪ ارزش اندوخته</strong> پس از ۶ ماه، با سود ۴٪ بالاتر از نرخ تضمینی [citation:2].</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>سود مشارکت + سود تضمینی</h3>
+                <p>علاوه بر سود تضمینی ۱۶٪، از سود مشارکت در سرمایه‌گذاری‌های شرکت بیمه نیز بهره‌مند می‌شوید [citation:2][citation:3].</p>
+            </div>
+        </div>
+
+        <!-- جدول مقایسه طلای پاسارگاد vs بیمه معمولی -->
+        <div class="compare-table" data-aos="fade-up">
+            <div class="section-title-gold" style="font-size: 1.3rem; margin-bottom: 1rem;">
+                <i class="fas fa-chart-simple"></i> مقایسه: بیمه «طلای پاسارگاد» در مقابل بیمه‌های معمولی
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ویژگی‌ها</th>
+                        <th>بیمه طلای پاسارگاد</th>
+                        <th>بیمه عمر معمولی</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>مبنای ارزش‌گذاری سرمایه</td><td><i class="fas fa-gem check-yes"></i> قیمت روز طلای ۲۴ عیار</td><td>ریال + سود ثابت (معمولاً ۱۶-۲۰٪)</td></tr>
+                    <tr><td>حفظ ارزش در برابر تورم</td><td><i class="fas fa-check-circle check-yes"></i> عالی (همسو با قیمت طلا)</td><td>متوسط (نیازمند سود بالاتر از تورم)</td></tr>
+                    <tr><td>پوشش بیماری‌های خاص</td><td><i class="fas fa-check-circle check-yes"></i> ۵ بیماری اصلی</td><td>برخی شرکت‌ها دارند</td></tr>
+                    <tr><td>وام از محل اندوخته</td><td><i class="fas fa-check-circle check-yes"></i> تا ۹۰٪ ارزش</td><td>بله (با شرایط مشابه)</td></tr>
+                    <tr><td>معافیت مالیاتی</td><td><i class="fas fa-check-circle check-yes"></i> دارد</td><td>دارد</td></tr>
+                    <tr><td style="background:#fef5e7;">ریسک نوسان سرمایه</td><td style="background:#fef5e7;">متوسط (وابسته به قیمت طلا) [citation:5]</td><td style="background:#fef5e7;">کم (سود تقریبا ثابت)</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.8rem; margin-top: 1rem; color:#6b5a3a;"><i class="fas fa-info-circle"></i> بر اساس اطلاعات شرکت بیمه پاسارگاد و کارشناسی‌های صنعت بیمه [citation:2][citation:3][citation:5]</p>
+        </div>
+    </div>
+
+    <!-- فرم ثبت‌نام ویژه کمپین قربان تا غدیر -->
     <div class="form-wrapper" data-aos="fade-up">
-        <div class="islamic-decoration">
-            <span>🐏</span> <i class="fas fa-kaaba"></i> <span>🤲</span> <i class="fas fa-hands-praying"></i> <span>✨ غدیر ✨</span>
+        <div class="section-title-gold" style="margin-bottom: 1rem;">
+            <i class="fas fa-pen-alt"></i> ثبت‌نام در کمپین ویژه «از قربان تا غدیر»
         </div>
-        <div class="timeline-note">
-            <span><i class="fas fa-heart" style="color:#c97e1a;"></i> عید قربان: ایثار و همدلی</span>
-            <span><i class="fas fa-flag-checkered"></i> عید غدیر: ولایت و برکت</span>
-            <span><i class="fas fa-percent"></i> پیشنهاد ویژه مخصوص این ایام</span>
-        </div>
-        <div class="section-title-form">
-            ثبت‌نام بیمه عمر | فرصت استثنایی از قربان تا غدیر
-        </div>
+        <p style="margin-bottom: 1.5rem;">با تکمیل این فرم، از تخفیف ویژه ۲۵٪ حق بیمه ماهانه و مشاوره رایگان تخصصی بیمه طلای پاسارگاد بهره‌مند شوید.</p>
         
-        <form id="eidInsuranceForm">
+        <form id="eidGoldForm">
             <div class="form-grid">
                 <div class="input-group">
                     <label><i class="fas fa-user"></i> نام و نام خانوادگی</label>
-                    <input type="text" id="fullName" placeholder="مثال: احمد رضایی" required>
+                    <input type="text" id="fullName" placeholder="مثال: محمد حسینی" required>
                 </div>
                 <div class="input-group">
                     <label><i class="fas fa-mobile-alt"></i> شماره همراه</label>
-                    <input type="tel" id="phoneNumber" placeholder="۰۹۱۲۱۲۳۴۵۶۷" required>
-                </div>
-                <div class="input-group">
-                    <label><i class="fas fa-envelope"></i> ایمیل (اختیاری)</label>
-                    <input type="email" id="email" placeholder="example@domain.com">
+                    <input type="tel" id="phone" placeholder="۰۹۱۲۱۲۳۴۵۶۷" required>
                 </div>
                 <div class="input-group">
                     <label><i class="fas fa-calendar"></i> تاریخ تولد</label>
                     <input type="text" id="birthdate" placeholder="۱۳۷۰/۰۵/۲۰">
                 </div>
                 <div class="input-group">
-                    <label><i class="fas fa-coins"></i> طرح بیمه مدنظر</label>
-                    <select id="insurancePlan">
-                        <option value="طرح پایه قربانی">طرح پایه «قربانی» (پوشش پایه)</option>
-                        <option value="طرح غدیر ویژه" selected>طرح ویژه «غدیر» (سرمایه‌گذاری + پوشش کامل)</option>
-                        <option value="طرح ولایت طلایی">طرح «ولایت طلایی» (بازدهی بالا + بیمه عمر)</option>
-                        <option value="طرح همدلی خانوادگی">طرح «همدلی خانوادگی» (پوشش همسر و فرزندان)</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label><i class="fas fa-hand-holding-usd"></i> بودجه ماهانه پیشنهادی (تومان)</label>
-                    <input type="text" id="budget" placeholder="مثلاً ۱,۵۰۰,۰۰۰">
-                </div>
-                <div class="input-group full-width">
-                    <label><i class="fas fa-gift"></i> کد تخفیف عیدانه (اختیاری)</label>
-                    <input type="text" id="coupon" placeholder="GhorbanGhadir1404">
-                </div>
-                <div class="input-group full-width">
-                    <label><i class="fas fa-info-circle"></i> نحوه آشنایی با کمپین «از قربان تا غدیر»</label>
-                    <select id="heardFrom">
-                        <option value="پیامک">پیامک تبریکی</option>
-                        <option value="شبکه های اجتماعی">شبکه‌های اجتماعی</option>
-                        <option value="مسجد/هیئت">مسجد / هیئت مذهبی</option>
-                        <option value="دوستان">معرفی دوستان</option>
+                    <label><i class="fas fa-coins"></i> حق بیمه پیشنهادی ماهانه (تومان)</label>
+                    <select id="budgetPlan">
+                        <option value="۵۰۰,۰۰۰">۵۰۰,۰۰۰ تومان</option>
+                        <option value="۱,۰۰۰,۰۰۰" selected>۱,۰۰۰,۰۰۰ تومان</option>
+                        <option value="۱,۵۰۰,۰۰۰">۱,۵۰۰,۰۰۰ تومان</option>
+                        <option value="۲,۰۰۰,۰۰۰">۲,۰۰۰,۰۰۰ تومان</option>
+                        <option value="سایر">سایر (توضیح در پیام)</option>
                     </select>
                 </div>
                 <div class="input-group full-width">
-                    <label><i class="fas fa-praying-hands"></i> ایام پربرکت: کدام یک برای شما اولویت دارد؟</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="blessing" value="عید قربان"> 🐏 عید قربان &nbsp; ایثار</label>
-                        <label><input type="radio" name="blessing" value="عید غدیر"> 🌟 عید غدیر &nbsp; ولایت</label>
-                        <label><input type="radio" name="blessing" value="هر دو"> 🤲 هر دو (برکت مضاعف)</label>
-                    </div>
-                </div>
-                <div class="input-group full-width">
-                    <label><i class="fas fa-comment-dots"></i> پیام یا درخواست ویژه (اختیاری)</label>
-                    <textarea rows="2" id="message" placeholder="سوال یا نکته خاص ..."></textarea>
+                    <label><i class="fas fa-comment"></i> پیام یا سوال شما (اختیاری)</label>
+                    <textarea rows="2" id="message" placeholder="سوالات خود را در مورد بیمه طلای پاسارگاد بپرسید..."></textarea>
                 </div>
             </div>
-
-            <div class="gift-box" data-aos="flip-up">
-                <i class="fas fa-star-of-life"></i> <strong>کمپین «از قربان تا غدیر»</strong> <i class="fas fa-star-of-life"></i><br>
-                با ثبت‌نام در این فرصت ویژه، علاوه بر <span class="highlight">تخفیف ۲۰ درصدی حق بیمه</span>، در قرعه‌کشی <span class="highlight">کارت هدیه ۱۰ میلیون تومانی</span> و <span class="highlight">تبرک متبرک اماکن مقدس</span> شرکت خواهید کرد.
+            
+            <div class="gift-box">
+                <i class="fas fa-gift" style="color:#d4af37; font-size:1.5rem;"></i>
+                <p style="margin-top: 0.5rem;">🎁 با ثبت‌نام در این کمپین، در <strong>قرعه‌کشی ۳ سکه تمام بهار آزادی</strong> و <strong>تبرک متبرک اماکن مقدس</strong> شرکت داده می‌شوید.</p>
+                <p style="font-size:0.8rem; margin-top: 0.5rem;">* فرصت ویژه فقط از عید قربان تا عید غدیر اعتبار دارد.</p>
             </div>
-
+            
             <button type="submit" class="btn-submit">
-                <i class="fas fa-hands-helping"></i> ثبت‌نام در طرح «از قربان تا غدیر»
+                <i class="fas fa-hands-helping"></i> ثبت‌نام در کمپین «طلای پاسارگاد»
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: #5f6c5a;">
-                ✨ شرایط ویژه فقط از روز عید قربان تا عید سعید غدیر اعتبار دارد. کارشناسان بیمه ظرف ۲۴ ساعت با شما تماس می‌گیرند.
-            </p>
         </form>
     </div>
 
+    <!-- اسلایدر نظرات مشتریان طلای پاسارگاد -->
+    <div style="margin: 2rem 0;" data-aos="fade-up">
+        <div class="section-title-gold" style="margin-bottom: 1rem;">
+            <i class="fas fa-star-of-life"></i> تجربه مشتریان طلای پاسارگاد
+        </div>
+        <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right" style="font-size:2rem; color:#d4af37;"></i>
+                        <p style="margin:1rem 0;">بیمه طلای پاسارگاد رو در کمپین قربان تهیه کردم. واقعاً خیالم از بابت تورم راحته، چون سرمایه‌ام با طلا بالا می‌ره.</p>
+                        <strong>- رضا علیپور</strong>
+                        <div><i class="fas fa-star" style="color:#fbbf24;"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right" style="font-size:2rem; color:#d4af37;"></i>
+                        <p style="margin:1rem 0;">پوشش بیماری‌های خاصش عالیه، من سابقه فامیلی دارم و این بیمه واقعاً بهم آرامش داد.</p>
+                        <strong>- دکتر سارا مرادی</strong>
+                        <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right" style="font-size:2rem; color:#d4af37;"></i>
+                        <p style="margin:1rem 0;">وام بدون ضامن ۹۰٪ از اندوخته رو گرفتم، خیلی کمکم کرد تو شرایط سخت.</p>
+                        <strong>- مهندس کریمی</strong>
+                        <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
     <footer>
-        <i class="fas fa-mosque"></i> یا علی ابن ابیطالب (ع) | ضیافت الهی از قربان تا غدیر مبارک باد 🌙
+        <i class="fas fa-mosque"></i> یا علی ابن ابیطالب (ع) - عید غدیر خم مبارک | ضیافت الهی از قربان تا غدیر 🌙<br>
+        بیمه عمر مبتنی بر طلا پاسارگاد - سرمایه‌ای به سنگینی طلا، امنیتی به وسعت عمر
     </footer>
 </div>
 
-<div id="toastMsg" class="toast-message">✅ ثبت‌نام ویژه شما انجام شد. کارشناسان با شما تماس می‌گیرند.</div>
+<div id="toastMsg" class="toast-message">✅ ثبت‌نام شما در کمپین طلای پاسارگاد انجام شد. کارشناسان تماس می‌گیرند.</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     AOS.init({ duration: 800, once: true, offset: 50 });
     
-    // نمایش توست با پیام
+    new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+
     function showToast(msg) {
         const toast = document.getElementById('toastMsg');
         toast.textContent = msg;
         toast.style.opacity = '1';
-        setTimeout(() => {
-            toast.style.opacity = '0';
-        }, 5000);
+        setTimeout(() => toast.style.opacity = '0', 5000);
     }
 
-    // اعتبارسنجی و ثبت فرم با حفظ تم مذهبی
-    const form = document.getElementById('eidInsuranceForm');
+    const form = document.getElementById('eidGoldForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const name = document.getElementById('fullName').value.trim();
-        const phone = document.getElementById('phoneNumber').value.trim();
-        const plan = document.getElementById('insurancePlan').value;
+        const phone = document.getElementById('phone').value.trim();
         
         if (!name) {
-            showToast("⚠️ لطفاً نام و نام خانوادگی خود را وارد کنید.");
+            showToast("⚠️ لطفاً نام و نام خانوادگی را وارد کنید.");
             return;
         }
         if (!phone || phone.length < 10) {
@@ -436,63 +523,30 @@
             return;
         }
         
-        // دریافت انتخاب رادیویی
-        let selectedBlessing = "هر دو";
-        const radioBtns = document.querySelectorAll('input[name="blessing"]');
-        for (let btn of radioBtns) {
-            if (btn.checked) {
-                selectedBlessing = btn.value;
-                break;
-            }
-        }
-        
-        // ساخت پیام تبریک و لاگ در کنسول (نمایش اطلاعات)
         const formData = {
             fullName: name,
             phone: phone,
-            email: document.getElementById('email').value,
             birthdate: document.getElementById('birthdate').value,
-            insurancePlan: plan,
-            budget: document.getElementById('budget').value,
-            coupon: document.getElementById('coupon').value,
-            heardFrom: document.getElementById('heardFrom').value,
-            blessingPriority: selectedBlessing,
-            message: document.getElementById('message').value
+            budgetPlan: document.getElementById('budgetPlan').value,
+            message: document.getElementById('message').value,
+            campaign: "قربان تا غدیر - طلای پاسارگاد"
         };
+        console.log("🎁 ثبت‌نام کمپین طلای پاسارگاد:", formData);
         
-        console.log("🎁 ثبت‌نام ویژه از قربان تا غدیر:", formData);
-        
-        // پیام موفقیت با تم مذهبی
-        showToast(`🐏🌙 برکت عید قربان و غدیر! ${name} عزیز، ثبت‌نام شما با موفقیت انجام شد. کارشناسان ظرف ۲۴ ساعت تماس می‌گیرند.`);
-        
-        // ریست فرم (اختیاری می‌توان نگه داشت)
-        // form.reset();
-        // اما برای تجربه بهتر فیلدهای ضروری پاک نشود؟ بهتر است فقط رادیوها reset نشوند 
-        // برای حفظ تجربه می‌توان فقط پیام و کد رو پاک کرد اما حالا اجازه دهید کاربر خودش بعدا بررسی کند.
-        // ما فقط فیلدهای غیرحساس را ریست می‌کنیم اما خیر، بهتر است اطلاعات باقی بماند تا کاربر متوجه شود ثبت شده.
-        // در عمل سرور اطلاعات رو ذخیره میکنه، فرم رو پاک نمیکنیم که بتونه کپی بگیره.
-        // فقط پیام خوش‌آمدگویی.
+        showToast(`✨ ${name} عزیز، ثبت‌نام شما در کمپین «از قربان تا غدیر» با موفقیت انجام شد. کارشناسان طلای پاسارگاد ظرف ۲۴ ساعت با شما تماس می‌گیرند.`);
+        form.reset();
     });
 
-    // اضافه کردن کد تخفیف خودکار پیشنهادی به کاربر (اختیاری - زیباسازی)
-    const couponField = document.getElementById('coupon');
-    if (couponField) {
-        couponField.placeholder = "GHADIR-QORBAN-20";
-    }
-    
-    // تغییرات داینامیک برای انتخاب تخفیف
-    const planSelect = document.getElementById('insurancePlan');
-    const giftBox = document.querySelector('.gift-box');
-    if (planSelect) {
-        planSelect.addEventListener('change', function() {
-            if (planSelect.value.includes("غدیر") || planSelect.value.includes("طلایی")) {
-                giftBox.style.backgroundColor = "#fff8e7";
-                giftBox.style.transition = "0.3s";
-            } else {
-                giftBox.style.backgroundColor = "#f9f1e0";
+    // انکر اسموث
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    }
+    });
 </script>
 </body>
 </html>
