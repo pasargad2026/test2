@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>آرمان آتیه | پیشرو در مشاوره و فروش بیمه عمر</title>
+    <title>فرصت ویژه بیمه عمر | از قربان تا غدیر</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Vazir + Outfit برای ترکیب مدرن -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- AOS -->
+    <!-- Google Fonts: Vazir + Amiri برای حس اصالت -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -20,549 +18,481 @@
         }
 
         body {
-            font-family: 'Vazir', 'Outfit', sans-serif;
-            background-color: #fefefe;
-            color: #111827;
+            font-family: 'Vazir', 'Amiri', serif;
+            background: linear-gradient(135deg, #0a2e1f 0%, #1a4d2e 50%, #0f3b24 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            position: relative;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* اسکرول بار سفارشی */
-        ::-webkit-scrollbar {
-            width: 6px;
+        /* تزئینات پس‌زمینه اسلامی */
+        body::before {
+            content: "﷽";
+            font-family: 'Amiri', serif;
+            font-size: 18vw;
+            position: fixed;
+            bottom: -5%;
+            left: -5%;
+            opacity: 0.03;
+            color: #d4af37;
+            pointer-events: none;
+            z-index: 0;
         }
-        ::-webkit-scrollbar-track {
-            background: #e6edf2;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #0f766e, #14b8a6);
-            border-radius: 10px;
+
+        body::after {
+            content: "🌙 ★ ✨";
+            font-size: 10rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            opacity: 0.04;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* نوار ناوبری شیشه‌ای با افکت blur بالا */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(125deg, #0b3b3a, #0f766e, #14b8a6);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        .logo i {
-            background: none;
-            background-clip: unset;
-            color: #14b8a6;
-            font-size: 2rem;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2.2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #1f3b3c;
-            transition: 0.25s;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover {
-            color: #0f766e;
-        }
-        .btn-nav {
-            background: #0f766e;
-            color: white !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 44px;
-            transition: all 0.25s;
-            box-shadow: 0 5px 12px -5px rgba(15,118,110,0.4);
-        }
-        .btn-nav:hover {
-            background: #14b8a6;
-            transform: translateY(-2px);
-        }
-        .mobile-menu {
-            display: none;
-            font-size: 1.7rem;
-            cursor: pointer;
-            color: #0f766e;
-        }
-
-        /* Hero premium با گرادینت و پترن */
-        .hero {
-            background: radial-gradient(circle at 10% 20%, rgba(15,118,110,0.03) 0%, rgba(255,255,255,0.98) 90%);
             position: relative;
-            padding: 5rem 0 6rem;
-            overflow: hidden;
+            z-index: 2;
         }
-        .hero .container {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-        .hero-content {
-            flex: 1.2;
-        }
-        .hero-badge {
-            background: rgba(20,184,166,0.12);
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #0f766e;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(4px);
-        }
-        .hero-content h1 {
-            font-size: 3.4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(130deg, #0b3b3a, #115e59, #2c7a7b);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1.3rem;
-        }
-        .hero-content p {
-            font-size: 1.1rem;
-            color: #49676e;
+
+        /* هدر کمپین */
+        .campaign-header {
+            text-align: center;
             margin-bottom: 2rem;
-            max-width: 90%;
+            padding: 1.5rem;
+            background: rgba(255, 248, 225, 0.95);
+            border-radius: 60px 60px 40px 40px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            border-bottom: 4px solid #d4af37;
+            backdrop-filter: blur(2px);
         }
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: linear-gradient(95deg, #0f766e, #14b8a6);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 48px;
-            font-weight: 700;
-            transition: all 0.3s;
+
+        .badge-islamic {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 8px 18px -6px rgba(15,118,110,0.5);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 28px -12px rgba(20,184,166,0.4);
-        }
-        .btn-outline-lux {
-            background: transparent;
-            border: 1.5px solid #0f766e;
-            color: #0f766e;
-            padding: 0.85rem 2rem;
-            border-radius: 48px;
-            font-weight: 700;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .btn-outline-lux:hover {
-            background: #0f766e;
-            color: white;
-            border-color: #0f766e;
-        }
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 48px;
-            box-shadow: 0 35px 55px -25px rgba(0,0,0,0.2);
-            transition: 0.4s;
-        }
-        .stats-flex {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-        .stat-item {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 2rem;
-            padding: 0.8rem 1.8rem;
-            border: 1px solid rgba(20,184,166,0.2);
-        }
-        .stat-number {
-            font-size: 1.8rem;
+            background: linear-gradient(135deg, #c9a32d, #e8c468);
+            padding: 0.4rem 1.5rem;
+            border-radius: 40px;
+            color: #1e3a2f;
             font-weight: 800;
-            color: #0f766e;
-        }
-
-        /* Section headings */
-        .section {
-            padding: 5rem 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.6rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
-            background: linear-gradient(125deg, #1f3b3c, #0f766e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .section-sub {
-            text-align: center;
-            color: #5d7a82;
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
         }
 
-        /* کارت‌های خدماتی با هدر گرادیان */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 2rem;
-        }
-        .service-card {
-            background: #ffffff;
-            border-radius: 2rem;
-            padding: 2rem 1.5rem;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.03);
-            border: 1px solid #eef3f0;
-            position: relative;
-            z-index: 1;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 2rem;
-            padding: 2px;
-            background: linear-gradient(145deg, rgba(20,184,166,0.2), transparent);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: 0.4s;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 28px 38px -16px rgba(15,118,110,0.25);
-            border-color: #ccf0ea;
-        }
-        .service-icon {
-            font-size: 2.8rem;
-            background: linear-gradient(120deg, #0f766e, #2c7a7b);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1.2rem;
-        }
-
-        /* pricing cards premium */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        .plan-card-premium {
-            background: #fff;
-            border-radius: 2rem;
-            padding: 2rem;
-            transition: 0.3s;
-            border: 1px solid #e4f0ec;
-            position: relative;
-        }
-        .plan-card-premium.featured {
-            background: linear-gradient(135deg, #ffffff, #fbfefc);
-            border-top: 5px solid #14b8a6;
-            transform: scale(1.02);
-            box-shadow: 0 20px 35px -12px rgba(20,184,166,0.25);
-        }
-        .price-tag {
-            font-size: 2.2rem;
+        .campaign-header h1 {
+            font-size: 2.3rem;
             font-weight: 800;
-            color: #0f766e;
-        }
-        .btn-plan {
-            background: transparent;
-            border: 1.5px solid #0f766e;
-            border-radius: 2rem;
-            padding: 0.7rem;
-            width: 100%;
-            font-weight: bold;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .btn-plan:hover {
-            background: #0f766e;
-            color: white;
+            background: linear-gradient(135deg, #2d6a4f, #1b4d3e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0.5rem 0;
         }
 
-        /* نظرات حرفه‌ای */
-        .testi-card {
-            background: #ffffffd9;
-            backdrop-filter: blur(6px);
-            border-radius: 2rem;
-            padding: 2rem;
+        .date-range {
+            font-family: 'Amiri', serif;
+            background: #fef5e7;
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #b57c1c;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .date-range i {
+            margin: 0 6px;
+        }
+
+        .offer-banner {
+            background: linear-gradient(120deg, #d4af37, #f3d382);
+            padding: 0.8rem;
+            border-radius: 32px;
             text-align: center;
-            box-shadow: 0 12px 28px -12px rgba(0,0,0,0.08);
-            border: 1px solid rgba(20,184,166,0.1);
+            color: #2c4b3a;
+            font-weight: 800;
+            margin: 1.2rem 0;
         }
 
-        /* فرم لوکس */
-        .form-luxury {
-            background: white;
-            border-radius: 2rem;
-            padding: 2.5rem;
-            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.15);
-            border: 1px solid #e1f0ec;
+        /* فرم اصلی */
+        .form-wrapper {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 48px;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: 0 35px 55px -20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(4px);
         }
-        .form-row-double {
+
+        .section-title-form {
+            font-size: 1.7rem;
+            font-weight: 700;
+            border-right: 5px solid #d4af37;
+            padding-right: 1rem;
+            margin-bottom: 1.5rem;
+            color: #1e4d38;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.2rem;
         }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 1rem 1.3rem;
-            border-radius: 2rem;
-            border: 1px solid #dce9e5;
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #2b5e42;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-group input, .input-group select, .input-group textarea {
+            padding: 0.9rem 1rem;
+            border-radius: 28px;
+            border: 1.5px solid #e2dccd;
             font-family: 'Vazir', sans-serif;
-            transition: 0.2s;
+            background: #fefcf7;
+            transition: all 0.25s;
+            font-size: 0.95rem;
         }
-        .form-group input:focus {
-            border-color: #14b8a6;
-            box-shadow: 0 0 0 4px rgba(20,184,166,0.1);
+
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
         }
-        .btn-submit-grad {
-            background: linear-gradient(95deg, #0f766e, #14b8a6);
-            width: 100%;
-            border-radius: 3rem;
-            padding: 1rem;
-            font-weight: bold;
-            color: white;
-            border: none;
+
+        /* گروه رادیویی */
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.4rem;
+        }
+        .radio-group label {
+            font-weight: normal;
+            gap: 5px;
             cursor: pointer;
         }
 
-        /* Footer مدرن */
-        .footer-premium {
-            background: #0a2625;
-            color: #bcd9d5;
-            padding: 3rem 0 2rem;
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(95deg, #2d6a4f, #1b4d3e);
+            color: white;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 48px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 8px 18px -6px #1b4d3e;
         }
 
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
-            .nav-links.active-mobile {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                background: rgba(255,255,255,0.98);
-                padding: 1.5rem;
-                border-radius: 2rem;
-                margin-top: 0.5rem;
-                backdrop-filter: blur(12px);
-            }
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-            .form-row-double {
+        .btn-submit:hover {
+            background: linear-gradient(95deg, #1b4d3e, #d4af37);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -10px #d4af37;
+        }
+
+        /* المان‌های تزئینی قربان و غدیر */
+        .islamic-decoration {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+            color: #d4af37;
+        }
+
+        .gift-box {
+            background: #f9f1e0;
+            border-radius: 28px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            border: 1px dashed #d4af37;
+        }
+
+        .highlight {
+            color: #b87c1a;
+            font-weight: 800;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: rgba(255,255,220,0.7);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
                 grid-template-columns: 1fr;
             }
+            .full-width {
+                grid-column: span 1;
+            }
+            .campaign-header h1 {
+                font-size: 1.7rem;
+            }
+            .form-wrapper {
+                padding: 1.5rem;
+            }
         }
-        .toast-msg {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: #0f766e;
-            color: white;
-            padding: 12px 26px;
-            border-radius: 50px;
-            z-index: 1200;
+
+        /* تایم‌لاین مخصوص مناسبت */
+        .timeline-note {
+            background: #eef3e9;
+            border-radius: 28px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
             font-weight: 500;
+        }
+
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #2d6a4f;
+            color: #ffefc0;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            z-index: 2000;
             opacity: 0;
             transition: 0.3s;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
             pointer-events: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-right: 5px solid #d4af37;
         }
     </style>
 </head>
 <body>
 
-<div class="navbar">
-    <div class="container nav-container">
-        <div class="logo"><i class="fas fa-shield-virus"></i> آرمان آتیه</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">خانه</a></li>
-            <li><a href="#services">خدمات تخصصی</a></li>
-            <li><a href="#plans">طرح‌های برتر</a></li>
-            <li><a href="#testimonials">بازخوردها</a></li>
-            <li><a href="#about">درباره ما</a></li>
-            <li><a href="#consult" class="btn-nav">مشاوره فوری</a></li>
-        </ul>
-        <div class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></div>
+<div class="container">
+    <!-- هدر کمپین: عید قربان تا عید غدیر -->
+    <div class="campaign-header" data-aos="fade-down">
+        <div class="badge-islamic">
+            <i class="fas fa-mosque"></i> مناسبت مبارک <i class="fas fa-star-and-crescent"></i>
+        </div>
+        <h1>🎁 طرح ویژه «از قربان تا غدیر» 🕋</h1>
+        <div class="date-range">
+            <i class="fas fa-calendar-alt"></i> از عید سعید قربان تا عید سعید غدیر خم 
+            <i class="fas fa-arrow-left"></i> فرصتی برای آرامش و سرمایه‌گذاری
+        </div>
+        <div class="offer-banner" data-aos="zoom-in">
+            <i class="fas fa-gift"></i> هدیه معنوی + تخفیف ویژه عیدانه &nbsp;|&nbsp; <strong>۲۰٪ کاهش حق بیمه ماهانه</strong> <i class="fas fa-hand-sparkles"></i>
+        </div>
     </div>
+
+    <!-- فرم ثبت‌نام بیمه عمر با تم قربان و غدیر -->
+    <div class="form-wrapper" data-aos="fade-up">
+        <div class="islamic-decoration">
+            <span>🐏</span> <i class="fas fa-kaaba"></i> <span>🤲</span> <i class="fas fa-hands-praying"></i> <span>✨ غدیر ✨</span>
+        </div>
+        <div class="timeline-note">
+            <span><i class="fas fa-heart" style="color:#c97e1a;"></i> عید قربان: ایثار و همدلی</span>
+            <span><i class="fas fa-flag-checkered"></i> عید غدیر: ولایت و برکت</span>
+            <span><i class="fas fa-percent"></i> پیشنهاد ویژه مخصوص این ایام</span>
+        </div>
+        <div class="section-title-form">
+            ثبت‌نام بیمه عمر | فرصت استثنایی از قربان تا غدیر
+        </div>
+        
+        <form id="eidInsuranceForm">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label><i class="fas fa-user"></i> نام و نام خانوادگی</label>
+                    <input type="text" id="fullName" placeholder="مثال: احمد رضایی" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-mobile-alt"></i> شماره همراه</label>
+                    <input type="tel" id="phoneNumber" placeholder="۰۹۱۲۱۲۳۴۵۶۷" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-envelope"></i> ایمیل (اختیاری)</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-calendar"></i> تاریخ تولد</label>
+                    <input type="text" id="birthdate" placeholder="۱۳۷۰/۰۵/۲۰">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-coins"></i> طرح بیمه مدنظر</label>
+                    <select id="insurancePlan">
+                        <option value="طرح پایه قربانی">طرح پایه «قربانی» (پوشش پایه)</option>
+                        <option value="طرح غدیر ویژه" selected>طرح ویژه «غدیر» (سرمایه‌گذاری + پوشش کامل)</option>
+                        <option value="طرح ولایت طلایی">طرح «ولایت طلایی» (بازدهی بالا + بیمه عمر)</option>
+                        <option value="طرح همدلی خانوادگی">طرح «همدلی خانوادگی» (پوشش همسر و فرزندان)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-hand-holding-usd"></i> بودجه ماهانه پیشنهادی (تومان)</label>
+                    <input type="text" id="budget" placeholder="مثلاً ۱,۵۰۰,۰۰۰">
+                </div>
+                <div class="input-group full-width">
+                    <label><i class="fas fa-gift"></i> کد تخفیف عیدانه (اختیاری)</label>
+                    <input type="text" id="coupon" placeholder="GhorbanGhadir1404">
+                </div>
+                <div class="input-group full-width">
+                    <label><i class="fas fa-info-circle"></i> نحوه آشنایی با کمپین «از قربان تا غدیر»</label>
+                    <select id="heardFrom">
+                        <option value="پیامک">پیامک تبریکی</option>
+                        <option value="شبکه های اجتماعی">شبکه‌های اجتماعی</option>
+                        <option value="مسجد/هیئت">مسجد / هیئت مذهبی</option>
+                        <option value="دوستان">معرفی دوستان</option>
+                    </select>
+                </div>
+                <div class="input-group full-width">
+                    <label><i class="fas fa-praying-hands"></i> ایام پربرکت: کدام یک برای شما اولویت دارد؟</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="blessing" value="عید قربان"> 🐏 عید قربان &nbsp; ایثار</label>
+                        <label><input type="radio" name="blessing" value="عید غدیر"> 🌟 عید غدیر &nbsp; ولایت</label>
+                        <label><input type="radio" name="blessing" value="هر دو"> 🤲 هر دو (برکت مضاعف)</label>
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <label><i class="fas fa-comment-dots"></i> پیام یا درخواست ویژه (اختیاری)</label>
+                    <textarea rows="2" id="message" placeholder="سوال یا نکته خاص ..."></textarea>
+                </div>
+            </div>
+
+            <div class="gift-box" data-aos="flip-up">
+                <i class="fas fa-star-of-life"></i> <strong>کمپین «از قربان تا غدیر»</strong> <i class="fas fa-star-of-life"></i><br>
+                با ثبت‌نام در این فرصت ویژه، علاوه بر <span class="highlight">تخفیف ۲۰ درصدی حق بیمه</span>، در قرعه‌کشی <span class="highlight">کارت هدیه ۱۰ میلیون تومانی</span> و <span class="highlight">تبرک متبرک اماکن مقدس</span> شرکت خواهید کرد.
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-hands-helping"></i> ثبت‌نام در طرح «از قربان تا غدیر»
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: #5f6c5a;">
+                ✨ شرایط ویژه فقط از روز عید قربان تا عید سعید غدیر اعتبار دارد. کارشناسان بیمه ظرف ۲۴ ساعت با شما تماس می‌گیرند.
+            </p>
+        </form>
+    </div>
+
+    <footer>
+        <i class="fas fa-mosque"></i> یا علی ابن ابیطالب (ع) | ضیافت الهی از قربان تا غدیر مبارک باد 🌙
+    </footer>
 </div>
 
-<!-- Hero Section لوکس -->
-<section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content" data-aos="fade-right">
-            <div class="hero-badge"><i class="fas fa-chart-line"></i> رتبه برتر مشاوره بیمه عمر ۱۴۰۴</div>
-            <h1>ثروت‌آفرینی هوشمند با بیمه عمر مدرن</h1>
-            <p>با پلن‌های اختصاصی آرمان آتیه، هم از زندگی خود محافظت کنید و هم سرمایه‌ای ماندگار برای آینده بسازید. مشاوره رایگان با نخبگان صنعت.</p>
-            <div class="hero-buttons">
-                <a href="#consult" class="btn-primary"><i class="fas fa-headset"></i> مشاوره اختصاصی</a>
-                <a href="#plans" class="btn-outline-lux"><i class="fas fa-chart-simple"></i> مقایسه بازدهی</a>
-            </div>
-            <div class="stats-flex">
-                <div class="stat-item"><span class="stat-number">+۳۲,۰۰۰</span><br>بیمه‌گذار خرسند</div>
-                <div class="stat-item"><span class="stat-number">۹۹٪</span><br>رضایت از خدمات</div>
-                <div class="stat-item"><span class="stat-number">۲۲</span><br>طرح سرمایه‌گذاری</div>
-            </div>
-        </div>
-        <div class="hero-image" data-aos="fade-left">
-            <img src="https://placehold.co/580x500/eef2f1/0f766e?text=Life+Insurance+Premium+Advisor&font=iran" alt="مشاوره بیمه عمر حرفه‌ای">
-        </div>
-    </div>
-</section>
-
-<!-- خدمات راهنمایی و مشاوره -->
-<section class="section" id="services">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">راهنمایی و مشاوره تخصصی بیمه عمر</h2>
-        <p class="section-sub" data-aos="fade-up">ما در کنار شما مسیر درست انتخاب طرح سرمایه‌گذاری و پوشش‌های بیمه‌ای را هموار می‌کنیم.</p>
-        <div class="services-grid" data-aos="fade-up">
-            <div class="service-card"><div class="service-icon"><i class="fas fa-microphone-alt"></i></div><h3>مشاوره فردی</h3><p>بررسی دقیق وضعیت مالی و هدف‌گذاری بلندمدت، متناسب با سن و درآمد.</p></div>
-            <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>مدیریت بهینه سرمایه</h3><p>بهترین ترکیب بیمه و سرمایه‌گذاری با نرخ بازدهی تضمینی.</p></div>
-            <div class="service-card"><div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div><h3>فروش هوشمند</h3><p>صدور آنلاین بیمه‌نامه در کمتر از ۱۵ دقیقه با بهترین تعرفه‌ها.</p></div>
-            <div class="service-card"><div class="service-icon"><i class="fas fa-concierge-bell"></i></div><h3>پشتیبانی VIP</h3><p>مدیریت خسارت و پاسخگویی ۲۴ ساعته توسط کارشناسان ارشد.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- پلن‌های ویژه بیمه -->
-<section class="section" id="plans" style="background: #fafefc;">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">طرح‌های بیمه عمر ممتاز</h2>
-        <p class="section-sub" data-aos="fade-up">انتخاب هوشمندانه برای ساختن آینده‌ای امن و پررونق</p>
-        <div class="plans-grid" data-aos="fade-up">
-            <div class="plan-card-premium"><i class="fas fa-feather-alt" style="font-size: 2rem; color:#0f766e;"></i><h3>طرح آتیه‌ساز</h3><div class="price-tag">از ۱,۱۰۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle" style="color:#14b8a6;"></i> پوشش فوت و نقص عضو</li><li><i class="fas fa-check-circle"></i> بازگشت ۱۰۰٪ حق بیمه</li><li><i class="fas fa-check-circle"></i> تخفیف گروهی خانواده</li></ul><button class="btn-plan" onclick="location.href='#consult'">درخواست مشاوره</button></div>
-            <div class="plan-card-premium featured"><i class="fas fa-gem" style="font-size: 2rem; color:#f59e0b;"></i><h3>طلایی آرمان</h3><div class="price-tag">از ۲,۴۰۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle"></i> سود سالانه تضمینی ۲۱٪</li><li><i class="fas fa-check-circle"></i> پوشش بیماری‌های خاص</li><li><i class="fas fa-check-circle"></i> وام فوری تا ۸۰٪ سرمایه</li></ul><button class="btn-plan" style="background:#0f766e;color:white; border:none;" onclick="location.href='#consult'">دریافت پیشنهاد ویژه</button></div>
-            <div class="plan-card-premium"><i class="fas fa-tree" style="font-size: 2rem; color:#0f766e;"></i><h3>نسل فردا</h3><div class="price-tag">از ۱,۷۵۰,۰۰۰ <span style="font-size:1rem;">تومان/ماه</span></div><ul style="margin:1rem 0; list-style: none;"><li><i class="fas fa-check-circle"></i> پوشش تحصیلی فرزندان</li><li><i class="fas fa-check-circle"></i> معافیت مالیاتی ۳۰٪</li><li><i class="fas fa-check-circle"></i> خروج بدون جریمه پس از ۳ سال</li></ul><button class="btn-plan" onclick="location.href='#consult'">مشاوره رایگان</button></div>
-        </div>
-    </div>
-</section>
-
-<!-- اسلایدر نظرات حرفه‌ای -->
-<section class="section" id="testimonials">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">نظرات مشتریان آرمان آتیه</h2>
-        <div class="swiper testimonials-swiper" data-aos="fade-up">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p style="margin:1rem 0;">مشاوره حرفه‌ای و دقیق، بهترین طرح سرمایه‌گذاری رو بر اساس نیازم انتخاب کردن. خیلی راضیم.</p><strong>- دکتر فاطمه کریمی</strong><div><i class="fas fa-star" style="color: #fbbf24;"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p>صدور بیمه فوق‌العاده سریع و پشتیبانی عالی. واقعاً به من احساس امنیت داد.</p><strong>- مهندس رضا کمالی</strong><div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
-                <div class="swiper-slide"><div class="testi-card"><i class="fas fa-quote-right" style="font-size:2rem; color:#14b8a6;"></i><p>طرح طلایی آرمان بازدهی فوق‌العاده‌ای داشت و تیم مشاور بسیار متعهد.</p><strong>- سعید جمالی</strong><div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div></div></div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-</section>
-
-<!-- About با تیم حرفه‌ای -->
-<section class="section" id="about">
-    <div class="container">
-        <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;">
-            <div data-aos="fade-right" style="flex:1;"><img src="https://placehold.co/500x460/eef2f5/0f766e?text=Expert+Advisors+Team" style="width:100%; border-radius: 2.5rem; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);" alt="تیم کارشناسی"></div>
-            <div data-aos="fade-left" style="flex:1;"><h2 style="font-size: 2rem; font-weight: 800;">تیم مشاوران خبره با مجوز رسمی</h2><p style="margin:1rem 0;">آرمان آتیه با بهره‌مندی از برترین مشاوران مالی و بیمه، موفق به کسب رضایت هزاران خانواده شده است. شفافیت، صداقت و سودآوری پایدار اولویت ماست.</p><a href="#consult" class="btn-primary"><i class="fas fa-calendar-week"></i> رزرو نوبت مشاوره</a></div>
-        </div>
-    </div>
-</section>
-
-<!-- فرم فروش و مشاوره پیشرفته -->
-<section class="section" id="consult" style="background: #f4fbf9;">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">درخواست مشاوره و فروش بیمه عمر</h2>
-        <p class="section-sub" data-aos="fade-up">همین حالا فرم را تکمیل کنید، کارشناسان ما ظرف ۴ ساعت با شما تماس می‌گیرند.</p>
-        <div class="form-luxury" data-aos="zoom-in">
-            <form id="premiumForm">
-                <div class="form-row-double">
-                    <div class="form-group"><input type="text" id="fullname" placeholder="نام و نام خانوادگی" required></div>
-                    <div class="form-group"><input type="tel" id="phone" placeholder="شماره همراه" required></div>
-                </div>
-                <div class="form-row-double">
-                    <div class="form-group"><select id="planSelect"><option value="">انتخاب طرح اولیه</option><option>طرح آتیه‌ساز</option><option>طلایی آرمان</option><option>نسل فردا</option><option>نیاز به مشاوره تخصصی</option></select></div>
-                    <div class="form-group"><input type="text" placeholder="بودجه پیشنهادی ماهانه (اختیاری)"></div>
-                </div>
-                <div class="form-group"><textarea rows="3" placeholder="توضیحات یا سوال شما ..."></textarea></div>
-                <button type="submit" class="btn-submit-grad"><i class="fas fa-shield-alt"></i> ثبت درخواست مشاوره فوری</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<footer class="footer-premium">
-    <div class="container">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
-            <div><h4><i class="fas fa-crown"></i> آرمان آتیه</h4><p>پیشرو در مشاوره بیمه عمر و سرمایه‌گذاری امن.</p></div>
-            <div><h4>دسترسی سریع</h4><a href="#home" style="color:#bcd9d5; display:block;">خانه</a><a href="#services">خدمات</a><a href="#plans">طرح‌ها</a><a href="#consult">مشاوره</a></div>
-            <div><h4>تماس با ما</h4><p><i class="fas fa-phone-alt"></i> ۰۲۱-۵۶۴۳۲۱۰</p><p><i class="fas fa-envelope"></i> support@armanatiyeh.ir</p></div>
-        </div>
-        <div style="text-align:center; border-top:1px solid #1f5852; margin-top:2rem; padding-top:1.5rem;">© ۱۴۰۴ تمامی حقوق متعلق به آرمان آتیه است | طراحی حرفه‌ای با استانداردهای روز</div>
-    </div>
-</footer>
-
-<div id="toastMsg" class="toast-msg">✅ درخواست مشاوره با موفقیت ثبت شد.</div>
+<div id="toastMsg" class="toast-message">✅ ثبت‌نام ویژه شما انجام شد. کارشناسان با شما تماس می‌گیرند.</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    AOS.init({ duration: 800, once: true, offset: 80 });
-    const mobileBtn = document.getElementById('mobileMenu');
-    const navMenu = document.getElementById('navLinks');
-    mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active-mobile'));
-    new Swiper('.testimonials-swiper', { slidesPerView: 1, spaceBetween: 30, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
-    function showToastMsg(msg) { const toast = document.getElementById('toastMsg'); toast.textContent = msg; toast.style.opacity = '1'; setTimeout(() => toast.style.opacity = '0', 4000); }
-    const form = document.getElementById('premiumForm');
-    form.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('fullname').value.trim(); const phone = document.getElementById('phone').value.trim(); if (!name || !phone) { showToastMsg("⚠️ لطفاً نام و شماره تماس را وارد کنید."); return; } showToastMsg("✅ درخواست شما ثبت شد، کارشناسان تماس می‌گیرند."); form.reset(); });
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const target = document.querySelector(this.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); if (navMenu.classList.contains('active-mobile')) navMenu.classList.remove('active-mobile'); } }); });
+    AOS.init({ duration: 800, once: true, offset: 50 });
+    
+    // نمایش توست با پیام
+    function showToast(msg) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 5000);
+    }
+
+    // اعتبارسنجی و ثبت فرم با حفظ تم مذهبی
+    const form = document.getElementById('eidInsuranceForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phoneNumber').value.trim();
+        const plan = document.getElementById('insurancePlan').value;
+        
+        if (!name) {
+            showToast("⚠️ لطفاً نام و نام خانوادگی خود را وارد کنید.");
+            return;
+        }
+        if (!phone || phone.length < 10) {
+            showToast("⚠️ شماره تماس معتبر وارد نمایید.");
+            return;
+        }
+        
+        // دریافت انتخاب رادیویی
+        let selectedBlessing = "هر دو";
+        const radioBtns = document.querySelectorAll('input[name="blessing"]');
+        for (let btn of radioBtns) {
+            if (btn.checked) {
+                selectedBlessing = btn.value;
+                break;
+            }
+        }
+        
+        // ساخت پیام تبریک و لاگ در کنسول (نمایش اطلاعات)
+        const formData = {
+            fullName: name,
+            phone: phone,
+            email: document.getElementById('email').value,
+            birthdate: document.getElementById('birthdate').value,
+            insurancePlan: plan,
+            budget: document.getElementById('budget').value,
+            coupon: document.getElementById('coupon').value,
+            heardFrom: document.getElementById('heardFrom').value,
+            blessingPriority: selectedBlessing,
+            message: document.getElementById('message').value
+        };
+        
+        console.log("🎁 ثبت‌نام ویژه از قربان تا غدیر:", formData);
+        
+        // پیام موفقیت با تم مذهبی
+        showToast(`🐏🌙 برکت عید قربان و غدیر! ${name} عزیز، ثبت‌نام شما با موفقیت انجام شد. کارشناسان ظرف ۲۴ ساعت تماس می‌گیرند.`);
+        
+        // ریست فرم (اختیاری می‌توان نگه داشت)
+        // form.reset();
+        // اما برای تجربه بهتر فیلدهای ضروری پاک نشود؟ بهتر است فقط رادیوها reset نشوند 
+        // برای حفظ تجربه می‌توان فقط پیام و کد رو پاک کرد اما حالا اجازه دهید کاربر خودش بعدا بررسی کند.
+        // ما فقط فیلدهای غیرحساس را ریست می‌کنیم اما خیر، بهتر است اطلاعات باقی بماند تا کاربر متوجه شود ثبت شده.
+        // در عمل سرور اطلاعات رو ذخیره میکنه، فرم رو پاک نمیکنیم که بتونه کپی بگیره.
+        // فقط پیام خوش‌آمدگویی.
+    });
+
+    // اضافه کردن کد تخفیف خودکار پیشنهادی به کاربر (اختیاری - زیباسازی)
+    const couponField = document.getElementById('coupon');
+    if (couponField) {
+        couponField.placeholder = "GHADIR-QORBAN-20";
+    }
+    
+    // تغییرات داینامیک برای انتخاب تخفیف
+    const planSelect = document.getElementById('insurancePlan');
+    const giftBox = document.querySelector('.gift-box');
+    if (planSelect) {
+        planSelect.addEventListener('change', function() {
+            if (planSelect.value.includes("غدیر") || planSelect.value.includes("طلایی")) {
+                giftBox.style.backgroundColor = "#fff8e7";
+                giftBox.style.transition = "0.3s";
+            } else {
+                giftBox.style.backgroundColor = "#f9f1e0";
+            }
+        });
+    }
 </script>
 </body>
 </html>
