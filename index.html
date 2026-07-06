@@ -2,768 +2,2082 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>طلای پاسارگاد | بیمه عمر مبتنی بر طلا | بیمه تکمیلی SOS جهانی + آتش‌سوزی رایگان</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font Vazir -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v33/Vazirmatn-font-face.css" rel="stylesheet">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Chart.js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمه عمر مبتنی بر طلا | بیمه پاسارگاد</title>
+    <!-- فونت‌های زیبا و مدرن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* ----- Base & Reset ----- */
+        :root {
+            --primary-gold: #FFD700;
+            --dark-gold: #C9A227;
+            --light-gold: #FFF9C4;
+            --gold-glow: rgba(255, 215, 0, 0.3);
+            --bg-dark: #0a0a0a;
+            --bg-card: #151515;
+            --bg-section: #111111;
+            --text-light: #F5F5F5;
+            --text-gray: #B0B0B0;
+            --accent-blue: #1E90FF;
+            --gradient-gold: linear-gradient(135deg, #FFD700, #C9A227, #B8860B);
+            --shadow-gold: 0 8px 32px rgba(255, 215, 0, 0.25);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Sahel', 'Vazirmatn', sans-serif;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Vazirmatn', 'Vazir', sans-serif;
-            background: #0a0a0a;
-            color: #e6d5a8;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
             overflow-x: hidden;
+            font-weight: 300;
+            position: relative;
         }
-
-        /* انیمیشن ذرات طلا */
+        
+        /* ----- Gold Background Particles ----- */
         .gold-particle {
             position: fixed;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, #ffd700, #b8860b);
+            background: var(--primary-gold);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             opacity: 0;
-            animation: floatGold linear infinite;
+            animation: floatParticle linear infinite;
         }
-
-        @keyframes floatGold {
+        
+        @keyframes floatParticle {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(100vh) translateX(0) rotate(0deg);
                 opacity: 0;
             }
             10% {
-                opacity: 0.6;
+                opacity: 0.3;
             }
             90% {
                 opacity: 0.3;
             }
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
                 opacity: 0;
             }
         }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 28px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* هدر شیشه‌ای طلایی - منظم‌تر */
-        .glass-header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-            position: sticky;
+        
+        /* ----- Navigation ----- */
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 0;
-            flex-wrap: wrap;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
-
-        .logo {
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            animation: logoShine 3s infinite linear;
+        }
+        
+        @keyframes logoShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .logo-text h2 {
+            color: var(--primary-gold);
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffd700, #e8b317);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
         }
-
-        .logo i {
-            color: #ffd700;
-            margin-left: 8px;
+        
+        .logo-text p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 3px;
         }
-
+        
         .nav-links {
             display: flex;
-            gap: 1.8rem;
-            list-style: none;
+            gap: 2.5rem;
         }
-
+        
         .nav-links a {
-            color: #e6d5a8;
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        .btn-nav {
-            background: linear-gradient(45deg, #ffd700, #c9a227);
-            color: #000 !important;
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        /* هیرو سکشن - مرتب‌تر */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
+            font-size: 1.05rem;
+            transition: all 0.3s;
             position: relative;
-            overflow: hidden;
-            padding: 3rem 0;
+            font-weight: 400;
+            padding: 5px 0;
         }
-
-        .hero .container {
+        
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            bottom: 0;
+            right: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ----- Hero Section ----- */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+            padding: 0 5%;
+            background: linear-gradient(
+                135deg, 
+                rgba(10, 10, 10, 0.95) 0%, 
+                rgba(21, 21, 21, 0.9) 50%, 
+                rgba(43, 32, 0, 0.85) 100%
+            );
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
         }
-
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 30%);
+            z-index: 1;
+        }
+        
         .hero-content {
-            flex: 1.2;
+            max-width: 700px;
+            z-index: 2;
+            position: relative;
         }
-
-        .hero-badge {
-            background: rgba(255, 215, 0, 0.12);
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
+        
         .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffd700, #f5c542);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.8rem;
-            line-height: 1.3;
-        }
-
-        .campaign-date {
-            background: rgba(0, 0, 0, 0.65);
-            border: 1.5px solid #ffd700;
-            border-radius: 50px;
-            padding: 0.5rem 1.2rem;
-            display: inline-block;
-            margin: 0.8rem 0;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #ffd966;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: #c9bc8a;
-            max-width: 90%;
+            font-size: 3.8rem;
+            color: var(--primary-gold);
             margin-bottom: 1.5rem;
-            line-height: 1.7;
+            line-height: 1.2;
+            font-weight: 900;
+            text-shadow: 0 5px 30px rgba(255, 215, 0, 0.4);
+            position: relative;
+            animation: titleGlow 2s infinite alternate;
         }
-
-        .hero-buttons {
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 0 5px 30px rgba(255, 215, 0, 0.4); }
+            100% { text-shadow: 0 5px 50px rgba(255, 215, 0, 0.7); }
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .highlight {
+            color: var(--primary-gold);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 215, 0, 0.2);
+            bottom: 5px;
+            right: 0;
+            z-index: -1;
+            border-radius: 5px;
+        }
+        
+        .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 1.8rem;
         }
-
-        .btn-gold {
-            background: linear-gradient(45deg, #ffd700, #c9a227);
+        
+        .cta-btn {
+            background: var(--gradient-gold);
             color: #000;
-            padding: 0.8rem 1.8rem;
-            border-radius: 40px;
+            padding: 1.2rem 2.5rem;
             text-decoration: none;
-            font-weight: bold;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            font-size: 0.9rem;
+            gap: 10px;
+            box-shadow: var(--shadow-gold);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
-        .btn-gold:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
-        }
-
-        .btn-outline-gold {
-            border: 1.5px solid #ffd700;
-            background: transparent;
-            color: #ffd700;
-            padding: 0.75rem 1.8rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn-outline-gold:hover {
-            background: #ffd700;
-            color: #000;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #ffd700;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image i {
-            font-size: 10rem;
-            color: rgba(255, 215, 0, 0.08);
-        }
-
-        /* کارت‌های طلایی */
-        .section-dark {
-            padding: 4rem 0;
-            background: #0f0f0f;
-        }
-
-        .section-light {
-            padding: 4rem 0;
-            background: #141414;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: #ffd700;
-        }
-
-        .section-sub {
-            text-align: center;
-            color: #b8a97a;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 0.9rem;
-        }
-
-        .gold-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .gold-card {
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 215, 0, 0.25);
-            border-radius: 20px;
-            padding: 1.8rem 1.2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .gold-card:hover {
-            transform: translateY(-6px);
-            border-color: #ffd700;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.1);
-        }
-
-        .gold-card i {
-            font-size: 2.2rem;
-            color: #ffd700;
-            margin-bottom: 0.8rem;
-        }
-
-        .gold-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .gold-card p {
-            font-size: 0.85rem;
-            color: #c9bc8a;
-        }
-
-        /* جدول مقایسه */
-        .compare-wrapper {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 1.2rem;
-            overflow-x: auto;
-            border: 1px solid rgba(255, 215, 0, 0.25);
-        }
-
-        .compare-table {
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
             width: 100%;
-            border-collapse: collapse;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+            z-index: -1;
         }
-
-        .compare-table th,
-        .compare-table td {
-            padding: 0.9rem;
-            text-align: right;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-            font-size: 0.85rem;
+        
+        .cta-btn:hover::before {
+            transform: translateX(100%);
         }
-
-        .compare-table th {
-            color: #ffd700;
-            font-weight: 700;
-            background: #0f0f0f;
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
         }
-
-        .compare-table td i.fa-check-circle {
-            color: #2ecc71;
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
         }
-
-        /* نمودار */
-        .chart-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: #1a1a1a;
-            padding: 1.2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.25);
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
         }
-
-        /* سوالات متداول */
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
+        
+        /* ----- Gold Bar Rain ----- */
+        .gold-bar-rain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+            z-index: 0;
         }
-
-        .faq-item {
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 14px;
-            margin-bottom: 1rem;
+        
+        .gold-bar {
+            position: absolute;
+            width: 40px;
+            height: 12px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 3px 8px 8px 3px;
+            top: -20px;
+            opacity: 0.6;
+            animation: fallDown linear infinite;
+            box-shadow: 0 0 10px var(--primary-gold);
+        }
+        
+        @keyframes fallDown {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* ----- Floating Gold Coins ----- */
+        .floating-coin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #C9A227);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.5),
+                inset 0 -3px 5px rgba(0, 0, 0, 0.2);
+            animation: floatCoin 8s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        .floating-coin::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            top: 7px;
+            right: 7px;
+        }
+        
+        @keyframes floatCoin {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* ----- Info Section ----- */
+        .info {
+            padding: 6rem 5%;
+            background: var(--bg-section);
+            position: relative;
             overflow: hidden;
         }
-
+        
+        .info::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-gold);
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            border-radius: 2px;
+            animation: pulseLine 2s infinite;
+        }
+        
+        @keyframes pulseLine {
+            0%, 100% { width: 100px; }
+            50% { width: 150px; }
+        }
+        
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 2rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.1);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .card-gold-corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 20px;
+            left: 20px;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-gold-corner {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* ----- Counter Section ----- */
+        .counter-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+            animation: rotateBackground 20s infinite linear;
+        }
+        
+        @keyframes rotateBackground {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .counter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(21, 21, 21, 0.9);
+            padding: 5rem 4rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .counter-container::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border: 2px solid rgba(255, 215, 0, 0.1);
+            border-radius: 25px;
+            pointer-events: none;
+        }
+        
+        .counter {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            font-weight: 900;
+            text-shadow: 
+                0 0 40px rgba(255, 215, 0, 0.5),
+                0 0 80px rgba(255, 215, 0, 0.3);
+            margin: 2rem 0;
+            font-family: 'Sahel', sans-serif;
+            direction: ltr;
+            display: block;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: counterPulse 2s infinite alternate;
+            letter-spacing: 1px;
+        }
+        
+        @keyframes counterPulse {
+            0% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 60px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .counter-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-top: 1rem;
+        }
+        
+        /* ----- سود مشارکت پاسارگاد Section ----- */
+        .gold-growth-section {
+            padding: 6rem 5%;
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gold-growth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gold-growth-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .growth-stat {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .growth-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .growth-stat i {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .growth-stat h4 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .growth-stat p {
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* ----- FAQ Section ----- */
+        .faq-section {
+            padding: 6rem 5%;
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active {
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         .faq-question {
-            padding: 1rem 1.3rem;
-            font-weight: 600;
-            cursor: pointer;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #ffd966;
-            font-size: 0.95rem;
+            cursor: pointer;
+            background: rgba(255, 215, 0, 0.05);
+            transition: all 0.3s;
         }
-
-        .faq-question i {
-            transition: 0.3s;
-            color: #ffd700;
+        
+        .faq-question:hover {
+            background: rgba(255, 215, 0, 0.08);
         }
-
-        .faq-answer {
-            padding: 0 1.3rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: 0.3s;
-            color: #b8a97a;
-            font-size: 0.85rem;
-            line-height: 1.7;
+        
+        .faq-question h4 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+            flex: 1;
         }
-
-        .faq-item.active .faq-answer {
-            padding: 0 1.3rem 1rem 1.3rem;
-            max-height: 200px;
+        
+        .faq-icon {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            margin-right: 15px;
         }
-
-        .faq-item.active .faq-question i {
+        
+        .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
-
-        /* فرم ثبت‌نام */
-        .form-card {
-            background: #1a1a1a;
-            border-radius: 24px;
+        
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
             padding: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.25);
-            max-width: 750px;
-            margin: 0 auto;
+            max-height: 1000px;
         }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        
+        .faq-answer p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
-
-        .full-width {
-            grid-column: span 2;
+        
+        .faq-answer ul {
+            list-style: none;
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
+        
+        .faq-answer li {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 1.5rem;
         }
-
-        .input-group label {
+        
+        .faq-answer li::before {
+            content: '•';
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+        
+        .faq-highlight {
+            color: var(--primary-gold);
             font-weight: 600;
-            color: #ffd966;
-            font-size: 0.8rem;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 5px;
         }
-
-        .input-group input,
-        .input-group select,
-        .input-group textarea {
-            padding: 0.7rem 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            background: #0f0f0f;
-            color: #e6d5a8;
-            font-family: inherit;
-            font-size: 0.85rem;
+        
+        /* ----- Hospitals Section ----- */
+        .hospitals-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-section) 100%);
+            position: relative;
+            overflow: hidden;
         }
-
-        .input-group input:focus,
-        .input-group select:focus {
-            outline: none;
-            border-color: #ffd700;
-        }
-
-        .btn-submit {
-            background: linear-gradient(45deg, #ffd700, #c9a227);
-            color: #000;
-            padding: 0.9rem;
-            border-radius: 40px;
-            font-weight: bold;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: 0.3s;
-            margin-top: 0.5rem;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        /* فوتر */
-        .footer {
-            background: #050505;
-            padding: 2rem 0 1.5rem;
-            border-top: 1px solid rgba(255, 215, 0, 0.15);
+        
+        .hospitals-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
             text-align: center;
         }
-
-        .footer p {
-            font-size: 0.8rem;
-            color: #b8a97a;
+        
+        .hospital-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
         }
-
-        @media (max-width: 768px) {
+        
+        .hospitals-container p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* ----- Glassmorphism Holdings Section ----- */
+        .holdings-section {
+            padding: 4rem 5%;
+            background: var(--bg-section);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .holdings-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .holdings-glass-card {
+            background: rgba(21, 21, 21, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        
+        .holdings-glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+        
+        .holdings-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .holdings-glass-card:hover .holdings-icon {
+            background: rgba(255, 215, 0, 0.25);
+            transform: scale(1.05);
+        }
+        
+        .holdings-glass-card h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .holdings-glass-card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .holdings-glass-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(201, 162, 39, 0.1));
+            color: var(--primary-gold);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .holdings-glass-btn:hover {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: #000;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transform: scale(1.02);
+            border-color: transparent;
+        }
+        
+        /* ----- Insurance Inquiry Section (بیمه مرکزی) با لوگوی رسمی از آدرس شما ----- */
+        .inquiry-section {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-section) 100%);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .inquiry-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .inquiry-glass-card {
+            background: rgba(21, 21, 21, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        
+        .inquiry-glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+        
+        .inquiry-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s;
+            overflow: hidden;
+            padding: 12px;
+        }
+        
+        .inquiry-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .inquiry-glass-card:hover .inquiry-icon {
+            background: rgba(255, 215, 0, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .inquiry-glass-card h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .inquiry-glass-card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .inquiry-glass-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(201, 162, 39, 0.1));
+            color: var(--primary-gold);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .inquiry-glass-btn:hover {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: #000;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transform: scale(1.02);
+            border-color: transparent;
+        }
+        
+        /* ----- Contact Section ----- */
+        .contact-section {
+            padding: 6rem 5%;
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-gold);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+        
+        .contact-details {
+            margin-top: 3rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .contact-detail:hover {
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateX(-10px);
+        }
+        
+        .contact-detail i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .contact-detail:hover i {
+            transform: scale(1.1);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+            background: rgba(255, 215, 0, 0.02);
+        }
+        
+        /* ----- Footer ----- */
+        footer {
+            background: #000;
+            padding: 5rem 5% 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            text-align: right;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-logo {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: logoFloat 3s infinite ease-in-out;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .footer-links h4 {
+            color: var(--primary-gold);
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            padding: 0.3rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            transform: translateX(-10px);
+        }
+        
+        .copyright {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* ----- Back to Top Button ----- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+        
+        /* ----- Responsive Design ----- */
+        @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 3rem;
             }
-            .form-grid {
-                grid-template-columns: 1fr;
+            
+            .section-header h2 {
+                font-size: 2.5rem;
             }
-            .full-width {
-                grid-column: span 1;
+            
+            .counter {
+                font-size: 2.8rem;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
             .nav-links {
                 display: none;
-            }
-            .hero-stats {
-                justify-content: center;
-            }
-            .hero .container {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 2px solid var(--primary-gold);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                margin-top: 70px;
                 text-align: center;
             }
-            .hero-content p {
-                max-width: 100%;
+            
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            .hero-buttons {
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .cta-buttons {
                 justify-content: center;
             }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter {
+                font-size: 2.2rem;
+            }
+            
+            .counter-container {
+                padding: 3rem 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .faq-container,
+            .hospitals-container,
+            .gold-growth-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
-
-        .toast-msg {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #ffd700;
-            color: #000;
-            padding: 10px 22px;
-            border-radius: 40px;
-            z-index: 1000;
-            opacity: 0;
-            transition: 0.3s;
-            font-weight: bold;
-            font-size: 0.85rem;
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .counter {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .card-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2.5rem;
+            }
+            
+            .faq-question h4 {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .footer-links {
+                text-align: center;
+            }
+            
+            .footer-links a:hover {
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- هدر شیشه‌ای منظم -->
-<div class="glass-header">
-    <div class="container">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-crown"></i> طلای پاسارگاد
+<!-- Gold Background Particles -->
+<div id="goldParticles"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="logo-container">
+        <div class="logo-icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="logo-text">
+            <h2>بیمه پاسارگاد</h2>
+            <p>بیمه عمر مبتنی بر طلا</p>
+        </div>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+        <a href="#home">خانه</a>
+        <a href="#features">مزایا</a>
+        <a href="#statistics">آمار</a>
+        <a href="#gold-growth">سود مشارکت</a>
+        <a href="#faq">سوالات متداول</a>
+        <a href="#hospitals">بیمارستان‌ها</a>
+        <a href="#contact">تماس</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="gold-bar-rain" id="goldBarRain"></div>
+    
+    <div class="hero-content">
+        <h1>بیمه عمر <span class="highlight">مبتنی بر طلا</span></h1>
+        <p>سرمایه‌گذاری مطمئن با پشتوانه طلا برای آینده‌ای درخشان و امن. 
+           <br>حفظ ارزش سرمایه در برابر تورم با بیمه‌نامه طلایی پاسارگاد</p>
+        
+        <div class="cta-buttons">
+            <a href="#contact" class="cta-btn">
+                <i class="fas fa-user-tie"></i>
+                دریافت مشاوره رایگان
+            </a>
+            <a href="#gold-growth" class="cta-btn secondary">
+                <i class="fas fa-chart-line"></i>
+                مشاهده سود مشارکت
+            </a>
+        </div>
+    </div>
+    
+    <!-- Floating Coins -->
+    <div class="floating-coin" style="top:20%; left:10%; animation-delay:0s;"></div>
+    <div class="floating-coin" style="top:30%; left:85%; animation-delay:1s;"></div>
+    <div class="floating-coin" style="top:70%; left:15%; animation-delay:2s;"></div>
+    <div class="floating-coin" style="top:80%; left:80%; animation-delay:3s;"></div>
+</section>
+
+<!-- Features Section -->
+<section class="info" id="features">
+    <div class="section-header">
+        <h2>چرا بیمه عمر مبتنی بر طلا؟</h2>
+        <p>با بیمه طلایی پاسارگاد، آینده مالی خود و خانواده‌تان را تضمین کنید</p>
+    </div>
+    
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-gem"></i>
             </div>
-            <ul class="nav-links">
+            <h3>پشتوانه طلا</h3>
+            <p>حفظ ارزش سرمایه در برابر تورم با مبنای طلا و سکه. سرمایه شما با قیمت طلا رشد می‌کند</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>سود مشارکت</h3>
+            <p>سهم شما از سود سرمایه‌گذاری‌های بزرگ و مطمئن شرکت بیمه پاسارگاد</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>امنیت آینده</h3>
+            <p>آرامش خاطر برای شما و خانواده‌تان با تضمین بیمه‌ای و پوشش‌های کامل</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3>وام بدون ضامن</h3>
+            <p>امکان دریافت وام آسان تا ۹۰ درصد ارزش بیمه‌نامه بدون نیاز به ضامن</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-umbrella"></i>
+            </div>
+            <h3>بهره‌مندی از ۱۲ پوشش</h3>
+            <p>پوشش‌های متنوع شامل SOS تکمیلی، آتش‌سوزی، فوت و سایر پوشش‌های مهم</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-award"></i>
+            </div>
+            <h3>تضمین کیفیت</h3>
+            <p>بیمه‌نامه معتبر از بزرگترین شرکت بیمه خصوصی ایران با سابقه درخشان</p>
+            <div class="card-gold-corner">
+                <div style="width:30px; height:30px; background:var(--primary-gold); border-radius:5px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Counter Section -->
+<section class="counter-section" id="statistics">
+    <div class="counter-container">
+        <h2 style="font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">آمار فروش بیمه عمر طلایی</h2>
+        <p style="font-size: 1.3rem; color: var(--text-gray);">تا امروز بیش از</p>
+        <div class="counter" id="sales-counter">0</div>
+        <p class="counter-subtitle">تومان بیمه عمر طلایی به فروش رسیده است</p>
+    </div>
+</section>
+
+<!-- سود مشارکت پاسارگاد Section -->
+<section class="gold-growth-section" id="gold-growth">
+    <div class="section-header">
+        <h2>سود مشارکت بیمه پاسارگاد در بیمه عمر طلایی</h2>
+        <p>مبالغ سود مشارکت در سال‌های اخیر (میلیارد تومان)</p>
+    </div>
+    
+    <div class="gold-growth-container">
+        <canvas id="goldGrowthChart"></canvas>
+        
+        <div class="gold-growth-info">
+            <div class="growth-stat">
+                <i class="fas fa-chart-line"></i>
+                <h4>سود مشارکت ۱۴۰۲</h4>
+                <p>۱,۲۰۰</p>
+            </div>
+            
+            <div class="growth-stat">
+                <i class="fas fa-coins"></i>
+                <h4>سود مشارکت ۱۴۰۳</h4>
+                <p>۲,۰۰۰</p>
+            </div>
+            
+            <div class="growth-stat">
+                <i class="fas fa-trophy"></i>
+                <h4>رشد کل</h4>
+                <p>۶۷٪</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" id="faq">
+    <div class="section-header">
+        <h2>سوالات متداول</h2>
+        <p>پاسخ به سوالات مهم شما درباره بیمه عمر مبتنی بر طلا</p>
+    </div>
+    
+    <div class="faq-container">
+        <div class="faq-item active">
+            <div class="faq-question">
+                <h4>بیمه عمر مبتنی بر طلا چه مزایایی نسبت به بیمه عمر عادی دارد؟</h4>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>بیمه عمر مبتنی بر طلا چندین مزیت منحصر به فرد دارد:</p>
+                <ul>
+                    <li><span class="faq-highlight">حفظ ارزش سرمایه در برابر تورم</span> - سرمایه شما با قیمت طلا افزایش می‌یابد</li>
+                    <li><span class="faq-highlight">سود مشارکت مضاعف</span> - هم از رشد قیمت طلا سود می‌برید و هم از سود سرمایه‌گذاری شرکت</li>
+                    <li><span class="faq-highlight">امنیت مالی بیشتر</span> - طلا همیشه ارزش خود را حفظ کرده و بهترین پشتوانه مالی است</li>
+                    <li><span class="faq-highlight">قابلیت نقدشوندگی بالا</span> - در هر زمان می‌توانید از مزایای بیمه استفاده کنید</li>
+                    <li><span class="faq-highlight">معافیت مالیاتی</span> - سود حاصل از این بیمه معاف از مالیات می‌باشد</li>
+                </ul>
+                <p>این بیمه بهترین انتخاب برای کسانی است که می‌خواهند در کنار تأمین آینده مالی، سرمایه‌شان در برابر تورم نیز محفوظ بماند.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>چگونه می‌توانم از بیمه عمر مبتنی بر طلا سود ببرم؟</h4>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>سودآوری در این بیمه از سه طریق اصلی اتفاق می‌افتد:</p>
+                <ul>
+                    <li><span class="faq-highlight">رشد ارزش طلا</span> - با افزایش قیمت جهانی و داخلی طلا، ارزش بیمه‌نامه شما نیز افزایش می‌یابد</li>
+                    <li><span class="faq-highlight">سود مشارکت در سرمایه‌گذاری</span> - شرکت بیمه پاسارگاد سرمایۀ جمع‌آوری‌شده را در پروژه‌های سودآور سرمایه‌گذاری می‌کند و سود حاصل بین بیمه‌گذاران توزیع می‌شود</li>
+                    <li><span class="faq-highlight">پوشش‌های تکمیلی</span> - در صورت وقوع حوادث خاص، مبالغ اضافی دریافت می‌کنید</li>
+                </ul>
+                <p>به طور میانگین، سود سالانه این بیمه‌نامه ۱۸-۲۵٪ می‌باشد که بسیار بالاتر از سپرده‌های بانکی است.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>آیا می‌توانم در طول مدت بیمه از سرمایه خود استفاده کنم؟</h4>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>بله! بیمه عمر مبتنی بر طلا پاسارگاد انعطاف‌پذیری بالایی دارد:</p>
+                <ul>
+                    <li><span class="faq-highlight">دریافت وام تا ۹۰٪ ارزش بیمه‌نامه</span> - بدون نیاز به ضامن و با کمترین مراحل اداری</li>
+                    <li><span class="faq-highlight">برداشت جزئی از سرمایه</span> - در شرایط خاص می‌توانید بخشی از سرمایه خود را برداشت کنید</li>
+                    <li><span class="faq-highlight">تغییر مبلغ بیمه</span> - امکان افزایش یا کاهش مبلغ بیمه در طول مدت قرارداد</li>
+                    <li><span class="faq-highlight">انتقال به دیگران</span> - می‌توانید بیمه‌نامه را به نام اعضای خانواده منتقل کنید</li>
+                </ul>
+                <p>این ویژگی‌ها باعث می‌شود بیمه عمر طلایی پاسارگاد نه تنها یک سرمایه‌گذاری، بلکه یک <span class="faq-highlight">منبع نقدینگی مطمئن</span> برای شما باشد.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>تفاوت بیمه عمر طلایی با خرید مستقیم طلا چیست؟</h4>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>بیمه عمر مبتنی بر طلا چندین برتری اساسی نسبت به خرید مستقیم طلا دارد:</p>
+                <ul>
+                    <li><span class="faq-highlight">امنیت فیزیکی</span> - نیازی به نگهداری فیزیکی طلا و نگرانی از دزدی یا گم شدن نیست</li>
+                    <li><span class="faq-highlight">پوشش بیمه‌ای</span> - علاوه بر سرمایه‌گذاری، از پوشش‌های جانبی و فوت نیز بهره‌مند می‌شوید</li>
+                    <li><span class="faq-highlight">سود مضاعف</span> - در خرید مستقیم فقط از رشد قیمت طلا سود می‌برید، اما در این بیمه هم از رشد طلا و هم از سود سرمایه‌گذاری بهره می‌برید</li>
+                    <li><span class="faq-highlight">معافیت مالیاتی</span> - سود حاصل از بیمه معاف از مالیات است</li>
+                    <li><span class="faq-highlight">سهولت در نقد کردن</span> - نقد کردن بیمه‌نامه بسیار آسان‌تر و سریع‌تر از فروش طلای فیزیکی است</li>
+                </ul>
+                <p>با بیمه عمر طلایی، <span class="faq-highlight">هم سرمایه‌گذاری می‌کنید، هم بیمه می‌شوید و هم آرامش خاطر دارید</span>.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h4>چه کسانی بیشترین بهره را از این بیمه می‌برند؟</h4>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>این بیمه برای همه اقشار جامعه مفید است، اما به خصوص مناسب این گروه‌ها می‌باشد:</p>
+                <ul>
+                    <li><span class="faq-highlight">والدین جوان</span> - برای تأمین آینده تحصیلی و ازدواج فرزندان</li>
+                    <li><span class="faq-highlight">کارمندان و حقوق‌بگیران</span> - برای ایجاد یک منبع درآمد پس از بازنشستگی</li>
+                    <li><span class="faq-highlight">کارآفرینان و صاحبان کسب‌وکار</span> - به عنوان یک ذخیره مالی مطمئن برای روزهای سخت</li>
+                    <li><span class="faq-highlight">زوج‌های جوان</span> - برای شروع زندگی مشترک با پشتوانه مالی مطمئن</li>
+                    <li><span class="faq-highlight">سرمایه‌گذاران محافظه‌کار</span> - کسانی که به دنبال سرمایه‌گذاری کم‌ریسک با بازدهی مناسب هستند</li>
+                </ul>
+                <p>فراموش نکنید: <span class="faq-highlight">بهترین زمان برای شروع بیمه عمر، امروز است</span>. هر چه زودتر شروع کنید، سرمایه بیشتری جمع خواهید کرد.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hospitals Section -->
+<section class="hospitals-section" id="hospitals">
+    <div class="section-header">
+        <h2>بیمارستان‌های طرف قرارداد</h2>
+        <p>دسترسی به بهترین مراکز درمانی با بیمه پاسارگاد</p>
+    </div>
+    
+    <div class="hospitals-container">
+        <div class="hospital-icon">
+            <i class="fas fa-hospital"></i>
+        </div>
+        
+        <p>شبکه گسترده بیمارستان‌های طرف قرارداد بیمه پاسارگاد با بیش از ۵۰۰ مرکز درمانی در سراسر ایران قرارداد دارد. با استفاده از بیمه عمر مبتنی بر طلا، از تخفیف‌های ویژه و خدمات ممتاز در این مراکز بهره‌مند شوید.</p>
+        
+        <a href="https://iranassistance.com/medical-centers" target="_blank" class="cta-btn">
+            <i class="fas fa-search"></i>
+            مشاهده لیست کامل بیمارستان‌ها
+        </a>
+    </div>
+</section>
+
+<!-- ===== HOLDINGS SECTION (هلدینگ‌های پاسارگاد) ===== -->
+<section class="holdings-section" id="holdings">
+    <div class="holdings-container">
+        <div class="holdings-glass-card">
+            <div class="holdings-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <h3>هلدینگ‌های پاسارگاد</h3>
+            <p>آشنایی با مجموعه هلدینگ‌های قدرتمند پاسارگاد در حوزه‌های مالی، سرمایه‌گذاری، صنعت و خدمات</p>
+            <a href="https://pasargadinsurance.ir/%DA%AF%D8%B1%D9%88%D9%87-%D9%85%D8%A7%D9%84%DB%8C-%D9%BE%D8%A7%D8%B3%D8%A7%D8%B1%DA%AF%D8%A7%D8%AF/" target="_blank" class="holdings-glass-btn">
+                <i class="fas fa-external-link-alt"></i>
+                مشاهده هلدینگ‌های پاسارگاد
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INSURANCE INQUIRY SECTION (استعلام بیمه مرکزی) با لوگوی رسمی ===== -->
+<section class="inquiry-section" id="inquiry">
+    <div class="inquiry-container">
+        <div class="inquiry-glass-card">
+            <div class="inquiry-icon">
+                <img src="https://logoyab.com/wp-content/uploads/2023/12/%D9%84%D9%88%DA%AF%D9%88-%D8%A8%DB%8C%D9%85%D9%87-%D9%85%D8%B1%DA%A9%D8%B2%DB%8C-%D8%AC%D9%85%D9%87%D9%88%D8%B1%DB%8C-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-1030x1030.png" 
+                     alt="لوگوی بیمه مرکزی جمهوری اسلامی ایران">
+            </div>
+            <h3>استعلام بیمه مرکزی</h3>
+            <p>استعلام آنلاین بیمه‌نامه و دریافت اطلاعات از سامانه بیمه مرکزی جمهوری اسلامی ایران</p>
+            <a href="https://www.centinsur.ir/fa-IR/Portal/4987/page/%D8%A7%D8%B3%D8%AA%D8%B9%D9%84%D8%A7%D9%85-%D8%A8%DB%8C%D9%85%D9%87-%D9%86%D8%A7%D9%85%D9%87-" target="_blank" class="inquiry-glass-btn">
+                <i class="fas fa-check-circle"></i>
+                استعلام بیمه‌نامه
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <div class="section-header">
+        <h2>درخواست مشاوره رایگان</h2>
+        <p>کارشناسان ما آماده پاسخگویی به سوالات شما هستند</p>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>با ما در تماس باشید</h3>
+            <p style="color: var(--text-gray); line-height: 1.8; margin-bottom: 2rem;">برای دریافت اطلاعات بیشتر و مشاوره رایگان در مورد بیمه عمر مبتنی بر طلا، فرم روبرو را پر کنید یا با شماره‌های زیر تماس بگیرید.</p>
+            
+            <div class="contact-details">
+                <div class="contact-detail">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <p style="font-weight: 600; color: var(--text-light);">شماره تماس</p>
+                        <p>09905754432</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p style="font-weight: 600; color: var(--text-light);">ایمیل</p>
+                        <p>online</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p style="font-weight: 600; color: var(--text-light);">آدرس</p>
+                        <p>تهران نواب مجتمع اداری شهاب</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h3 style="color: var(--primary-gold); margin-bottom: 1.5rem; font-size: 1.5rem;">ثبت‌نام آنلاین</h3>
+            <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.8;">
+                برای درخواست مشاوره رایگان یا ثبت‌نام در طرح بیمه عمر طلایی، می‌توانید از طریق لینک زیر به فرم ثبت‌نام آنلاین مراجعه کنید:
+            </p>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeblstoPyB3-pfUu53OnBQhm7ZpfOBoH7aJXfzCD7Id3ppT2g/viewform?usp=dialog" target="_blank" class="cta-btn" style="width: 100%; text-align: center; margin-top: 2rem;">
+                <i class="fas fa-external-link-alt"></i>
+                مراجعه به فرم ثبت‌نام آنلاین
+            </a>
+            
+            <p style="color: var(--text-gray); margin-top: 2rem; font-size: 0.9rem; text-align: center;">
+                <i class="fas fa-info-circle" style="color: var(--primary-gold);"></i>
+                پس از پر کردن فرم، کارشناسان ما در سریع‌ترین زمان با شما تماس خواهند گرفت.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 style="color: var(--primary-gold); margin-bottom: 1rem;">بیمه پاسارگاد</h3>
+            <p style="color: var(--text-gray); line-height: 1.8;">ارائه دهنده بیمه عمر مبتنی بر طلا با بیشترین سود مشارکت و پوشش‌های تکمیلی</p>
+        </div>
+        
+        <div class="footer-links">
+            <h4>لینک‌های سریع</h4>
+            <ul>
                 <li><a href="#home">خانه</a></li>
-                <li><a href="#features">مزایا</a></li>
-                <li><a href="#compare">مقایسه</a></li>
-                <li><a href="#faq">سوالات</a></li>
-                <li><a href="#register" class="btn-nav">ثبت‌نام</a></li>
+                <li><a href="#features">مزایای بیمه</a></li>
+                <li><a href="#statistics">آمار فروش</a></li>
+                <li><a href="#gold-growth">سود مشارکت</a></li>
+                <li><a href="#faq">سوالات متداول</a></li>
+                <li><a href="#hospitals">بیمارستان‌ها</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>خدمات بیمه</h4>
+            <ul>
+                <li><a href="#">بیمه عمر طلایی</a></li>
+                <li><a href="#">بیمه درمان</a></li>
+                <li><a href="#">بیمه مسئولیت</a></li>
+                <li><a href="#">بیمه آتش‌سوزی</a></li>
+                <li><a href="#">بیمه شخص ثالث</a></li>
             </ul>
         </div>
     </div>
-</div>
-
-<!-- بخش اصلی Hero -->
-<section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content" data-aos="fade-right">
-            <div class="hero-badge">
-                <i class="fas fa-gem"></i> بیمه عمر مبتنی بر طلا | پاسارگاد
-            </div>
-            <h1>سرمایه‌ای به سنگینی طلا<br>امنیتی به وسعت عمر</h1>
-            <div class="campaign-date">
-                <i class="fas fa-calendar-alt"></i> مهلت ثبت‌نام کمپین عید قربان تا عید غدیر: <strong>۶ تا ۱۴ اردیبهشت ماه</strong>
-            </div>
-            <p>ارزش اندوخته شما بر اساس قیمت روز طلای ۲۴ عیار محاسبه می‌شود. بدون محدودیت سنی، وام بدون ضامن، <strong>بیمه تکمیلی SOS جهانی</strong> و بیمه آتش‌سوزی منزل رایگان!</p>
-            <div class="hero-buttons">
-                <a href="#register" class="btn-gold"><i class="fas fa-headset"></i> مشاوره و ثبت‌نام</a>
-                <a href="#features" class="btn-outline-gold"><i class="fas fa-chart-line"></i> مزایا بیشتر</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item"><div class="stat-number">۱۵۰,۰۰۰+</div><div>بیمه‌گذار</div></div>
-                <div class="stat-item"><div class="stat-number">۹۸٪</div><div>رضایت</div></div>
-                <div class="stat-item"><div class="stat-number">۸۰۰+</div><div>میلیارد تومان فروش</div></div>
-            </div>
-        </div>
-        <div class="hero-image" data-aos="fade-left">
-            <i class="fas fa-gem"></i>
-        </div>
-    </div>
-</section>
-
-<!-- بخش مزایا - با عبارت بیمه تکمیلی SOS -->
-<section class="section-dark" id="features">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">چرا بیمه عمر مبتنی بر طلا؟</h2>
-        <p class="section-sub" data-aos="fade-up">مزایای منحصربه‌فردی که این طرح را به بهترین انتخاب تبدیل کرده است</p>
-        <div class="gold-grid">
-            <div class="gold-card" data-aos="fade-up"><i class="fas fa-coins"></i><h3>پشتوانه طلا</h3><p>ارزش سرمایه بر اساس قیمت روز طلای ۲۴ عیار، حفظ ارزش در برابر تورم</p></div>
-            <div class="gold-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-hand-holding-usd"></i><h3>وام بدون ضامن</h3><p>تا ۹۰٪ ارزش اندوخته، بدون نیاز به ضامن و با کمترین کارمزد</p></div>
-            <div class="gold-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-globe-asia"></i><h3>بیمه تکمیلی SOS جهانی</h3><p>پوشش اضطراری پزشکی در سراسر جهان، امداد و انتقال بیمار، کاملاً رایگان</p></div>
-            <div class="gold-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-home"></i><h3>بیمه آتش‌سوزی منزل</h3><p>پوشش رایگان بنا و اثاثیه منزل در برابر آتش‌سوزی، بدون هزینه اضافه</p></div>
-            <div class="gold-card" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-infinity"></i><h3>بدون محدودیت سنی</h3><p>افراد در هر سنی می‌توانند ثبت‌نام کرده و از مزایا بهره‌مند شوند</p></div>
-            <div class="gold-card" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-chart-line"></i><h3>سود مشارکتی</h3><p>بهره‌مندی از سود سرمایه‌گذاری‌های شرکت بیمه پاسارگاد</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- جدول مقایسه -->
-<section class="section-light" id="compare">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">مقایسه با بیمه‌های معمولی</h2>
-        <p class="section-sub" data-aos="fade-up">طلای پاسارگاد در یک نگاه</p>
-        <div class="compare-wrapper" data-aos="fade-up">
-            <table class="compare-table">
-                <thead>
-                    <tr><th>ویژگی</th><th>طلای پاسارگاد</th><th>بیمه عمر معمولی</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>مبنای ارزش‌گذاری</td><td><i class="fas fa-gem" style="color:#ffd700;"></i> قیمت طلای ۲۴ عیار</td><td>ریال + سود ثابت</td></tr>
-                    <tr><td>بیمه تکمیلی SOS جهانی</td><td><i class="fas fa-check-circle"></i> رایگان</td><td>ندارد / با هزینه اضافه</td></tr>
-                    <tr><td>بیمه آتش‌سوزی منزل (بنا+اثاثیه)</td><td><i class="fas fa-check-circle"></i> رایگان</td><td>ندارد</td></tr>
-                    <tr><td>وام بدون ضامن</td><td><i class="fas fa-check-circle"></i> بله (تا ۹۰٪ اندوخته)</td><td>نیاز به ضامن</td></tr>
-                    <tr><td>محدودیت سنی</td><td><i class="fas fa-check-circle"></i> بدون محدودیت</td><td>۱۸ تا ۶۰ سال</td></tr>
-                    <tr><td>حفظ در برابر تورم</td><td><i class="fas fa-check-circle"></i> عالی (همسو با طلا)</td><td>متوسط</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- نمودار سود مشارکت -->
-<section class="section-dark">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">سود مشارکت در منافع</h2>
-        <p class="section-sub" data-aos="fade-up">رشد پایدار سرمایه همراه با طلا</p>
-        <div class="chart-container" data-aos="fade-up">
-            <canvas id="profitChart"></canvas>
-        </div>
-    </div>
-</section>
-
-<!-- سوالات متداول -->
-<section class="section-light" id="faq">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">سوالات متداول</h2>
-        <div class="faq-grid" data-aos="fade-up">
-            <div class="faq-item"><div class="faq-question">آیا واقعاً برای تمام سنین امکان ثبت‌نام وجود دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">بله، در طرح طلای پاسارگاد هیچ محدودیت سنی وجود ندارد و افراد در هر سنی می‌توانند ثبت‌نام کنند.</div></div>
-            <div class="faq-item"><div class="faq-question">وام بدون ضامن چگونه دریافت می‌شود؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پس از ۶ ماه، تا ۹۰٪ ارزش اندوخته بدون نیاز به ضامن و تنها با تعهد بیمه‌نامه قابل دریافت است.</div></div>
-            <div class="faq-item"><div class="faq-question">بیمه تکمیلی SOS جهانی چه خدماتی دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پوشش اضطراری پزشکی، امداد و نجات، انتقال بیمار به نزدیک‌ترین مرکز درمانی، خدمات درمانی اورژانس در سراسر جهان، کاملاً رایگان.</div></div>
-            <div class="faq-item"><div class="faq-question">بیمه آتش‌سوزی منزل چه پوششی دارد؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">پوشش رایگان بنا (ساختمان) و اثاثیه منزل در برابر آتش‌سوزی، انفجار و صاعقه، بدون پرداخت حق بیمه اضافه.</div></div>
-            <div class="faq-item"><div class="faq-question">مهلت ثبت‌نام کمپین ویژه تا کی است؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">مهلت ثبت‌نام کمپین عید قربان تا عید غدیر از ۶ تا ۱۴ اردیبهشت ماه می‌باشد.</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- فرم ثبت‌نام -->
-<section class="section-dark" id="register">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">ثبت‌نام در طرح طلای پاسارگاد</h2>
-        <p class="section-sub" data-aos="fade-up">همین حالا فرم را پر کنید، کارشناسان ما با شما تماس می‌گیرند</p>
-        <div class="form-card" data-aos="fade-up">
-            <form id="registerForm">
-                <div class="form-grid">
-                    <div class="input-group"><label>نام و نام خانوادگی</label><input type="text" id="fullname" required></div>
-                    <div class="input-group"><label>شماره همراه</label><input type="tel" id="phone" required></div>
-                    <div class="input-group"><label>تاریخ تولد (اختیاری)</label><input type="text" placeholder="۱۳۷۰/۰۵/۲۰"></div>
-                    <div class="input-group"><label>حق بیمه پیشنهادی (تومان)</label><select><option>۵۰۰,۰۰۰</option><option selected>۱,۰۰۰,۰۰۰</option><option>۱,۵۰۰,۰۰۰</option><option>۲,۰۰۰,۰۰۰</option></select></div>
-                    <div class="full-width input-group"><label>پیام یا سوال</label><textarea rows="2" placeholder="سوال خود را بپرسید..."></textarea></div>
-                </div>
-                <button type="submit" class="btn-submit"><i class="fas fa-gem"></i> ثبت‌نام در طرح طلای پاسارگاد</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- فوتر -->
-<footer class="footer">
-    <div class="container">
-        <p><i class="fas fa-crown" style="color:#ffd700;"></i> بیمه عمر مبتنی بر طلا | شرکت بیمه پاسارگاد</p>
-        <p style="margin-top: 0.4rem;">سرمایه‌ای به سنگینی طلا، امنیتی به وسعت عمر | کمپین ویژه عید قربان تا عید غدیر: ۶ تا ۱۴ اردیبهشت</p>
-        <p style="margin-top: 0.8rem; font-size: 0.7rem;">© ۱۴۰۴ تمامی حقوق محفوظ است</p>
+    
+    <div class="copyright">
+        <p>© 1405 - تمامی حقوق برای بیمه پاسارگاد محفوظ است | طراحی شده با ❤️</p>
     </div>
 </footer>
 
-<div id="toastMsg" class="toast-msg">✅ ثبت‌نام شما با موفقیت انجام شد!</div>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 700, once: true });
-
-    // ذرات طلا
-    function createParticles() {
-        for (let i = 0; i < 40; i++) {
-            let particle = document.createElement('div');
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinksMenu = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinksMenu.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinksMenu.classList.contains('active') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksMenu.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+    
+    // Create Gold Particles
+    function createGoldParticles() {
+        const container = document.getElementById('goldParticles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
             particle.classList.add('gold-particle');
-            let size = Math.random() * 5 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDuration = Math.random() * 14 + 7 + 's';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            document.body.appendChild(particle);
+            
+            const size = Math.random() * 4 + 1;
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * 20;
+            const left = Math.random() * 100;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            
+            container.appendChild(particle);
         }
     }
-    createParticles();
-
-    // Chart.js
-    const ctx = document.getElementById('profitChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
+    
+    // Create Gold Bars Rain
+    function createGoldBarRain() {
+        const container = document.getElementById('goldBarRain');
+        const barCount = 15;
+        
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement('div');
+            bar.classList.add('gold-bar');
+            
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 5;
+            const delay = Math.random() * 15;
+            const size = Math.random() * 20 + 30;
+            const height = Math.random() * 5 + 8;
+            
+            bar.style.left = `${left}%`;
+            bar.style.width = `${size}px`;
+            bar.style.height = `${height}px`;
+            bar.style.animationDuration = `${duration}s`;
+            bar.style.animationDelay = `${delay}s`;
+            
+            container.appendChild(bar);
+        }
+    }
+    
+    // Create Floating Coins
+    function createFloatingCoins() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            if (section.id !== 'home') {
+                const coinCount = 5;
+                for (let i = 0; i < coinCount; i++) {
+                    const coin = document.createElement('div');
+                    coin.classList.add('floating-coin');
+                    
+                    const top = Math.random() * 80 + 10;
+                    const left = Math.random() * 80 + 10;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 5 + 5;
+                    
+                    coin.style.top = `${top}%`;
+                    coin.style.left = `${left}%`;
+                    coin.style.animationDelay = `${delay}s`;
+                    coin.style.animationDuration = `${duration}s`;
+                    coin.style.opacity = '0.3';
+                    coin.style.width = '20px';
+                    coin.style.height = '20px';
+                    
+                    section.appendChild(coin);
+                }
+            }
+        });
+    }
+    
+    // Counter Animation
+    let sales = 0;
+    const targetSales = 800000000000;
+    const counterElem = document.getElementById('sales-counter');
+    let counterStarted = false;
+    
+    function updateSales() {
+        if(!counterStarted) {
+            counterStarted = true;
+            const increment = targetSales / 100;
+            
+            const counterInterval = setInterval(() => {
+                if(sales < targetSales){
+                    sales += increment;
+                    if(sales > targetSales) {
+                        sales = targetSales;
+                        clearInterval(counterInterval);
+                    }
+                    
+                    const formattedSales = Math.floor(sales).toLocaleString('fa-IR');
+                    counterElem.innerText = formattedSales;
+                }
+            }, 50);
+        }
+    }
+    
+    // FAQ Accordion
+    function initFAQAccordion() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                item.classList.toggle('active');
+            });
+        });
+    }
+    
+    // نمودار سود مشارکت
+    const goldCtx = document.getElementById('goldGrowthChart').getContext('2d');
+    
+    const years = ['۱۴۰۱', '۱۴۰۲', '۱۴۰۳'];
+    const profits = [850, 1200, 2000];
+    
+    new Chart(goldCtx, {
+        type: 'bar',
         data: {
-            labels: ['۱۴۰۰', '۱۴۰۱', '۱۴۰۲', '۱۴۰۳', '۱۴۰۴'],
+            labels: years,
             datasets: [{
-                label: 'سود مشارکت در منافع (میلیارد تومان)',
-                data: [850, 1100, 1480, 1920, 2450],
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255,215,0,0.08)',
-                tension: 0.3,
-                fill: true,
-                pointRadius: 5,
-                pointBackgroundColor: '#ffd700',
-                pointBorderColor: '#b8860b',
-                borderWidth: 2.5
+                label: 'سود مشارکت (میلیارد تومان)',
+                data: profits,
+                backgroundColor: [
+                    'rgba(255, 215, 0, 0.5)',
+                    'rgba(255, 215, 0, 0.6)',
+                    'rgba(255, 215, 0, 0.7)'
+                ],
+                borderColor: '#FFD700',
+                borderWidth: 2,
+                borderRadius: 10,
+                barPercentage: 0.7
             }]
         },
         options: {
             responsive: true,
+            maintainAspectRatio: true,
             plugins: {
-                legend: { labels: { color: '#ffd700', font: { size: 11 } } }
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: '#FFD700',
+                        font: { size: 14, family: 'Sahel' }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.85)',
+                    titleColor: '#FFD700',
+                    bodyColor: '#FFF',
+                    borderColor: '#FFD700',
+                    borderWidth: 2
+                }
             },
             scales: {
-                x: { ticks: { color: '#e6d5a8' }, grid: { color: 'rgba(255,215,0,0.15)' } },
-                y: { ticks: { color: '#e6d5a8' }, grid: { color: 'rgba(255,215,0,0.15)' } }
+                y: {
+                    ticks: { color: '#FFD700' },
+                    grid: { color: 'rgba(255,215,0,0.1)' }
+                },
+                x: {
+                    ticks: { color: '#FFD700' },
+                    grid: { color: 'rgba(255,215,0,0.1)' }
+                }
             }
         }
     });
-
-    // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
+    
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        createGoldParticles();
+        createGoldBarRain();
+        createFloatingCoins();
+        
+        const counterSection = document.getElementById('statistics');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counterStarted) {
+                    updateSales();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(counterSection);
+        initFAQAccordion();
+        
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card, .growth-stat').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            animationObserver.observe(element);
         });
     });
-    if (faqItems.length) faqItems[0].classList.add('active');
-
-    // Toast Message
-    function showToast(msg) {
-        const toast = document.getElementById('toastMsg');
-        toast.textContent = msg;
-        toast.style.opacity = '1';
-        setTimeout(() => toast.style.opacity = '0', 4000);
-    }
-
-    // Form Submit
-    const form = document.getElementById('registerForm');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('fullname').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        if (!name || !phone) {
-            showToast("⚠️ لطفاً نام و شماره تماس را وارد کنید.");
-            return;
-        }
-        showToast(`✅ ${name} عزیز، ثبت‌نام شما در طرح طلای پاسارگاد با موفقیت انجام شد. کارشناسان تماس می‌گیرند.`);
-        form.reset();
-    });
 </script>
+
 </body>
 </html>
